@@ -1,26 +1,28 @@
 import React from 'react'
-import logo from './logo.svg'
+// import logo from './logo.svg'
 import './App.css'
 
-function App () {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  )
+const fetch = require('node-fetch')
+
+class App extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {}
+  }
+
+  async componentDidMount () {
+  // testing proxied route.
+    let response = await fetch('http://localhost:8080/testproxy', {
+      method: 'POST'
+    })
+    console.log(response)
+    let jsonResponse = await response.json()
+    console.log(jsonResponse.message)
+  }
+
+  render () {
+    return (<p>hej</p>)
+  }
 }
 
 export default App

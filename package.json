@@ -6,18 +6,21 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
+    "helmet": "^3.21.2",
     "mongoose": "^5.7.7",
+    "node-fetch": "^2.6.0",
     "nodemon": "^1.19.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0"
   },
+  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "nodemon server.js"
+    "devserver": "cd server && nodemon server.js"
   },
   "eslintConfig": {
     "extends": "react-app"
