@@ -2,7 +2,13 @@ import React from 'react'
 // import logo from './logo.svg'
 import './App.css'
 
-const fetch = require('node-fetch')
+import LoginControl from './components/navigation/LoginControl'
+import RegisterControl from './components/navigation/RegisterControl'
+
+import LoginModal from './components/navigation/LoginModal'
+import RegisterModal from './components/navigation/RegisterModal'
+
+// const fetch = require('node-fetch')
 
 class App extends React.Component {
   constructor (props) {
@@ -11,17 +17,20 @@ class App extends React.Component {
   }
 
   async componentDidMount () {
-  // testing proxied route.
-    let response = await fetch('http://localhost:8080/testproxy', {
-      method: 'POST'
-    })
-    console.log(response)
-    let jsonResponse = await response.json()
-    console.log(jsonResponse.message)
+  // get logged in status
   }
 
   render () {
-    return (<p>hej</p>)
+    return (
+      <div>
+        <nav>
+          <LoginControl />
+          <RegisterControl />
+        </nav>
+        <LoginModal />
+        <RegisterModal />
+      </div>
+    )
   }
 }
 
