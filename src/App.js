@@ -2,13 +2,12 @@ import React from 'react'
 // import logo from './logo.svg'
 import './App.css'
 
-import LoginControl from './components/navigation/LoginControl'
-import RegisterControl from './components/navigation/RegisterControl'
+import LoginController from './components/authentication/LoginController'
 
-import LoginModal from './components/navigation/LoginModal'
-import RegisterModal from './components/navigation/RegisterModal'
+import LoginModal from './components/authentication/LoginModal'
+import RegisterModal from './components/authentication/RegisterModal'
 
-// const fetch = require('node-fetch')
+const fetch = require('node-fetch')
 
 class App extends React.Component {
   constructor (props) {
@@ -17,15 +16,23 @@ class App extends React.Component {
   }
 
   async componentDidMount () {
-  // get logged in status
+    let response = await fetch('/userLoggedInStatus', {
+      method: 'GET'
+      /* headers: {
+        'Content-Type': 'application/json'
+      } */
+    })
+    let jsonResponse = await response.json()
+    this.setState({
+      isLoggedIn: jsonResponse.isLoggedIn
+    })
   }
 
   render () {
     return (
       <div>
         <nav>
-          <LoginControl />
-          <RegisterControl />
+          <LoginController isLoggedIn={this.state.isLoggedIn} />
         </nav>
         <LoginModal />
         <RegisterModal />
