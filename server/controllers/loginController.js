@@ -3,6 +3,10 @@ const User = require('../models/UserSchema')
 const loginController = {}
 
 loginController.login = async (req, res) => {
+  if (req.body.remember) {
+    // remember! set persisting cookie
+  }
+
   await User.findOne({username: req.body.username}, (err, user) => {
     if (err) {
       console.log(err)
