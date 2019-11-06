@@ -3,10 +3,6 @@ const User = require('../models/UserSchema')
 const loginController = {}
 
 loginController.login = async (req, res) => {
-  if (req.body.remember) {
-    // remember! set persisting cookie
-  }
-
   await User.findOne({username: req.body.username}, (err, user) => {
     if (err) {
       console.log(err)
@@ -15,9 +11,12 @@ loginController.login = async (req, res) => {
       user.comparePassword(req.body.password, (err, isMatching) => {
         if (err) {
           console.log(err)
-          // flash message, "login failed"
+      // flash message, "login failed"
         } else if (isMatching) {
           req.session.userId = user._id
+        }
+        if (req.body.remember) {
+          req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 7 // week in milliseconds
         }
         res.redirect('/')
       })

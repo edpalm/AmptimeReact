@@ -25,7 +25,7 @@ class LoginModal extends Component {
             <input type='password' placeholder='Enter Password' name='password' required autoComplete='on' />
             <button className='loginButton' type='submit'>Login</button>
             <label>
-              <input onChange={this.toggleCheckBox} type='checkbox' name='remember' /> Remember me
+              <input onChange={this.toggleCheckBox} type='checkbox' name='remember' /> Keep me logged in
             </label>
           </div>
           <div className='modalContainer'>
