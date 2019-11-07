@@ -1,9 +1,11 @@
 import React from 'react'
 // import logo from './logo.svg'
-import './App.css'
-
+import './styles/App.css'
+import AboutButton from './components/about/AboutButton'
 import LoginController from './components/authentication/LoginController'
+import AudioController from './components/audio/AudioController'
 
+import AboutModal from './components/about/AboutModal'
 import LoginModal from './components/authentication/LoginModal'
 import RegisterModal from './components/authentication/RegisterModal'
 
@@ -31,9 +33,15 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <nav>
+        <nav className='navigation'>
+          <AboutButton />
           <LoginController isLoggedIn={this.state.isLoggedIn} />
         </nav>
+        <div className='toolbar'>
+          <p>Toolbar</p>
+        </div>
+        <AudioController isLoggedIn={this.state.isLoggedIn} />
+        <AboutModal />
         <LoginModal />
         <RegisterModal />
       </div>
