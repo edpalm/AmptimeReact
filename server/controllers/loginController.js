@@ -17,6 +17,8 @@ loginController.login = async (req, res) => {
         }
         if (req.body.remember) {
           req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 7 // week in milliseconds
+        } else {
+          req.session.cookie.maxAge = 1000 * 60 * 60 * 1 * 1
         }
         res.redirect('/')
       })

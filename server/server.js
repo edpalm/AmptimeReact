@@ -7,25 +7,18 @@ const mongoose = require('../config/mongoose.js')
 const port = 8080
 const loginRouter = require('./routes/loginRouter')
 const session = require('express-session')
-const MongoDBStore = require('connect-mongodb-session')(session)
+const MongoDBStore = require('connect-mongo')(session)
 
 const app = express()
 
 // Setup session store
 const store = new MongoDBStore({
-  uri: process.env.STORE_URI,
-  databaseName: process.env.STORE_DBNAME,
-  collection: process.env.STORE_COLLECTION
-},
-(err) => {
-  if (err) {
-    console.log(err)
-  }
+  url: process.env.STORE_URI
 })
 
-store.on('error', (err) => {
+/* store.on('error', (err) => {
   console.log(err)
-})
+}) */
 
 // Connect to dB
 mongoose()
