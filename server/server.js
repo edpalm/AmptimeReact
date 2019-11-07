@@ -49,4 +49,6 @@ app.use(express.static(path.join(__dirname, '../build')))
 
 app.use('/', loginRouter)
 
-app.listen(port)
+app.listen(port, () => {
+  console.log(`Express production server started on https://localhost:${port}`)
+})
