@@ -6,7 +6,6 @@ import LogoutControl from './LogoutControl'
 
 class LoginController extends React.Component {
   render () {
-    console.log(this.props)
     if (this.props.isLoggedIn) {
       return (
         <LogoutControl />
