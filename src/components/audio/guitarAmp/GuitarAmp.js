@@ -1,5 +1,7 @@
 import React from 'react'
-import '../../../styles/guitarAmp.css'
+import '../../../styles/audio/guitarAmp/guitarAmp.css'
+import AddEffectModal from './AddEffectModal'
+import AddEffectButton from './AddEffectButton'
 
 class GuitarAmp extends React.Component {
   render () {
@@ -7,10 +9,12 @@ class GuitarAmp extends React.Component {
     return (
       <div className='guitarAmp'>
         <div className='guitarAmpToolbar'>
-          <p className='guitarAmpToolbar'>Guitar amp toolbar</p>
+          <webaudio-switch />
+          <AddEffectButton />
         </div>
         <div className='effectArea'>
-          <p className='effectArea'>EffectArea</p>
+          <AddEffectModal />
+          <p>EffectArea</p>
         </div>
       </div>
     )

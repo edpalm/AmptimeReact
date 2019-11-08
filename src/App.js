@@ -38,7 +38,7 @@ class App extends React.Component {
           <LoginController isLoggedIn={this.state.isLoggedIn} />
         </nav>
         <div className='toolbar'>
-          <p>Toolbar</p>
+          <p>Application choice toolbar</p>
         </div>
         <AudioController isLoggedIn={this.state.isLoggedIn} />
         <AboutModal />
