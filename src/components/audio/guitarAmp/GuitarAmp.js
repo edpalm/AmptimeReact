@@ -2,7 +2,7 @@ import React from 'react'
 import '../../../styles/audio/guitarAmp/guitarAmp.css'
 import AddEffectModal from './AddEffectModal'
 import AddEffectButton from './AddEffectButton'
-import PowerButton from './PowerButton'
+import PowerSwitch from './PowerSwitch'
 
 class GuitarAmp extends React.Component {
   constructor (props) {
@@ -36,18 +36,16 @@ class GuitarAmp extends React.Component {
       })
   }
 
-  toggleAudioState () {
-    console.log('power on/off')
-    this.audioState = !this.audioState
-    if (this.audioState) {
+  // callback for powerswitch
+  toggleAudioState (powerIsOn) {
+    if (powerIsOn) {
       this.audioCtx.resume()
-      console.log(this.audioCtx.state)
     } else {
       this.audioCtx.suspend()
-      console.log(this.audioCtx.state)
     }
   }
 
+  // callback for effect-selection modal
   addEffectModule (e) {
     console.log(e.target.value)
     // update array of effect-module-objects
@@ -61,7 +59,7 @@ class GuitarAmp extends React.Component {
     return (
       <div className='guitarAmp'>
         <div className='guitarAmpToolbar'>
-          <PowerButton toggleAudioState={this.toggleAudioState} />
+          <PowerSwitch toggleAudioState={this.toggleAudioState} />
           <AddEffectButton />
         </div>
         <div className='effectArea'>
