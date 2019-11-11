@@ -16,7 +16,7 @@ class AddEffectModal extends Component {
             <h2>Add Effect</h2>
             <div className='buttonContainer'>
               <button onClick={this.props.addEffectModule} value='cabinet' type='button'>Cabinet</button>
-              <button onClick={this.props.addEffectModule} value='comp' type='button'>Compressor</button>
+              <button onClick={this.props.addEffectModule} value='compressor' type='button'>Compressor</button>
               <button onClick={this.props.addEffectModule} value='delay' type='button'>Delay</button>
               <button onClick={this.props.addEffectModule} value='distortion' type='button'>Distortion</button>
               <button onClick={this.props.addEffectModule} value='eq3' type='button'>EQ 3-band</button>
