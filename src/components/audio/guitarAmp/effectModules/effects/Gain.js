@@ -16,11 +16,22 @@ class Gain extends Component {
     this.gain = this.audioCtx.createGain()
     this.gain.gain.setValueAtTime(0, this.audioCtx.currentTime)
 
+    this.chainGain1 = this.audioCtx.createGain()
+    this.chainGain1.gain.setValueAtTime(0, this.audioCtx.currentTime)
+
+    this.chainGain2 = this.audioCtx.createGain()
+    this.chainGain1.gain.setValueAtTime(0, this.audioCtx.currentTime)
+
     this.testGain = this.audioCtx.createGain()
     this.testGain.gain.setValueAtTime(0, this.audioCtx.currentTime)
 
-    this.internalChain = [this.gain, this.testGain]
-    this.props.effectChain.push(this.internalChain)
+    this.effectModule = {
+      input: this.gain,
+      internalChain: [this.chainGain1, this.chainGain1],
+      output: this.testGain
+    }
+
+    this.props.effectChain.push(this.effectModule)
   }
 
   render () {

@@ -17,6 +17,7 @@ class App extends React.Component {
     this.state = {}
   }
 
+  // move to constructor?
   async componentDidMount () {
     let response = await fetch('/userLoggedInStatus', {
       method: 'GET'

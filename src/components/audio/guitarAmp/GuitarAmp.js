@@ -33,25 +33,24 @@ class GuitarAmp extends React.Component {
     this.source = this.audioCtx.createMediaStreamSource(stream)
   }
 
-  // Wip, refactor
   setUpEffectChain () {
-    console.log('Setting upp effect chain..')
-    this.source.connect(this.effectChain[0][0]) // connect source to 1st node in chain.
-    if (this.effectChain.length > 1) {
-      for (let i = 0; i < this.effectChain.length; i++) {
-        // for every nodearray
-        for (let j = 0; j < this.effectChain[i].length; j++) {
-          console.log(this.effectChain[i][j])
-          // this.effectChain[i][j].connect()
-        }
+    this.source.connect(this.effectChain[0].input) // connect source to 1st node in chain.
+
+    const lastEffectInChain = this.effectChain.length - 1
+
+    this.effectChain.forEach((audioNode, i) => {
+      if (audioNode.internalChain.length === 0) {
+        // connect node input to node output directly.
+      } else {
+        // connect input through chain and to output.
       }
-    } else {
-      for (let i = 0; i < this.effectChain.length; i++) {
-        console.log(this.effectChain[i])
+      if (i === lastEffectInChain) {
+        // connect to master output.
+      } else {
+        // connect to next index input.
       }
-    }
-    // forEach effectmodule
-    // connect effectModules output to next effectmodule input
+    })
+    console.log(this.source)
   }
 
   // callback for powerswitch
@@ -78,6 +77,7 @@ class GuitarAmp extends React.Component {
   }
 
   render () {
+    // Add master gain component in guitarAmpToolbar
     let key = 0
     let id = 0
     const effectModules = this.state.effectModules.map(effectType => <EffectModule key={'EffectModule' + key++} effectType={effectType} effectChain={this.effectChain} audioCtx={this.audioCtx} id={id++} />)
