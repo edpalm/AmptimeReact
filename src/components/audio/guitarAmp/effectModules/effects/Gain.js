@@ -18,7 +18,7 @@ class Gain extends Component {
     return (
       <div>
         <button type='button'>Gain</button>
-        <button type='button'>GainSwitch</button>
+        <button type='button'>OnOff</button>
       </div>
     )
   }
