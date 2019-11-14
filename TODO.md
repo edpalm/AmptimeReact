@@ -4,12 +4,13 @@
 # Presets routing
 # Save presets to db
 ## Frontend
+# localstorage for current chain setup
 # Add effect-modules
 # Presets when logged in
 # Crud Presets
 # Finish About-Modal, embed video showing demo?, attributions, contributions
 # Dynamic Audio Chain with web audio.
-# Styles
+# Styles - sass
 # Responsiveness for different viewports/screensizes
 ## Production
 # Reverse Proxy(nginx)

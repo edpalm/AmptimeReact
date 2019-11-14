@@ -9,10 +9,14 @@ class GuitarAmp extends React.Component {
   constructor (props) {
     super(props)
     this.state = {effectModules: []}
+
+    this.effectID = 0
+
     this.effectModules = []
+    this.effectChain = []
+
     this.addEffectModule = this.addEffectModule.bind(this)
     this.toggleAudioState = this.toggleAudioState.bind(this)
-    this.effectChain = []
   }
 
   componentDidMount () {
@@ -64,7 +68,14 @@ class GuitarAmp extends React.Component {
 
   // callback for effect-selection modal
   addEffectModule (e) {
-    let effectModule = e.target.value
+    let effectType = e.target.value
+    let effectID = this.effectID++
+
+    let effectModule = {
+      effectType: effectType,
+      effectID: effectType + effectID
+    }
+
     let newArrayChain = this.state.effectModules.concat(effectModule)
     this.setState({effectModules: newArrayChain})
   }
@@ -78,9 +89,7 @@ class GuitarAmp extends React.Component {
 
   render () {
     // Add master gain component in guitarAmpToolbar
-    let key = 0
-    let id = 0
-    const effectModules = this.state.effectModules.map(effectType => <EffectModule key={'EffectModule' + key++} effectType={effectType} effectChain={this.effectChain} audioCtx={this.audioCtx} id={id++} />)
+    const effectModules = this.state.effectModules.map(effectModule => <EffectModule key={effectModule.effectID} effectType={effectModule.effectType} effectChain={this.effectChain} audioCtx={this.audioCtx} id={effectModule.effectID} />)
 
     return (
       <div className='guitarAmp'>

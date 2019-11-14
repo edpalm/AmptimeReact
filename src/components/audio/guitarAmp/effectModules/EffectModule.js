@@ -2,11 +2,11 @@ import React, { Component } from 'react'
 import Gain from './effects/Gain'
 
 // Controller & Facade for effect modules.
-class BaseModule extends Component {
+class EffectModule extends Component {
   render () {
     if (this.props.effectType === 'gain') {
       return (
-        <Gain key={this.props.effectType + this.props.id} effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        <Gain effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
       )
     } else {
       return (
@@ -16,4 +16,4 @@ class BaseModule extends Component {
   }
 }
 
-export default BaseModule
+export default EffectModule
