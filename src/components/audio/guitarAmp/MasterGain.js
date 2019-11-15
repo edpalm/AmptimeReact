@@ -11,7 +11,7 @@ class MasterGain extends Component {
     this.handleEvent = this.handleEvent.bind(this)
   }
 
-  handleEvent (e) {
+  handleChange (e) {
     this.setState({value: e.target.value})
     // change gainvalue.
   }
@@ -19,7 +19,7 @@ class MasterGain extends Component {
   render () {
     return (
       <input
-        onChange={this.handleEvent}
+        onChange={this.handleChange}
         type='range'
         min='0'
         max='10'
