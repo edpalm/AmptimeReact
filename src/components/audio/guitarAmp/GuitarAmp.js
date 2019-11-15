@@ -3,6 +3,7 @@ import '../../../styles/audio/guitarAmp/guitarAmp.css'
 import AddEffectModal from './AddEffectModal'
 import AddEffectButton from './AddEffectButton'
 import PowerSwitch from './PowerSwitch'
+import MasterGain from './MasterGain'
 import EffectModule from './effectModules/EffectModule'
 
 class GuitarAmp extends React.Component {
@@ -11,10 +12,10 @@ class GuitarAmp extends React.Component {
     this.state = {effectModules: []}
 
     this.effectID = 0
-
     this.effectModules = []
     this.effectChain = []
 
+    // Callback binds
     this.addEffectModule = this.addEffectModule.bind(this)
     this.toggleAudioState = this.toggleAudioState.bind(this)
   }
@@ -45,10 +46,12 @@ class GuitarAmp extends React.Component {
     this.effectChain.forEach((audioNode, i) => {
       if (audioNode.internalChain.length === 0) {
         // connect node input to node output directly.
+        audioNode.input.connect(audioNode.output)
       } else {
         // connect input through chain and to output.
       }
       if (i === lastEffectInChain) {
+        audioNode.output.connect()
         // connect to master output.
       } else {
         // connect to next index input.
@@ -97,6 +100,7 @@ class GuitarAmp extends React.Component {
           <PowerSwitch toggleAudioState={this.toggleAudioState} />
           <AddEffectButton />
           <AddEffectModal addEffectModule={this.addEffectModule} />
+          <MasterGain />
         </div>
         <div className='effectArea'>
           {effectModules}

@@ -16,3 +16,5 @@
 # Reverse Proxy(nginx)
 # Https
 
+## Misc
+# Consistent names for eventhandlers.

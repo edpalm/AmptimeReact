@@ -11,7 +11,6 @@ class PowerSwitch extends Component {
 
   handleChange (checked) {
     this.setState({ checked })
-
     // set audio state in parent component
     let powerIsOn = checked
     this.props.toggleAudioState(powerIsOn)
@@ -19,9 +18,7 @@ class PowerSwitch extends Component {
 
   render () {
     return (
-      <label>
-        <Switch onChange={this.handleChange} checked={this.state.checked} uncheckedIcon={false} checkedIcon={false} className='powerSwitch' />
-      </label>
+      <Switch onChange={this.handleChange} checked={this.state.checked} uncheckedIcon={false} checkedIcon={false} className='powerSwitch' />
     )
   }
 }
