@@ -8,7 +8,7 @@ class MasterGain extends Component {
   constructor () {
     super()
     this.state = {value: 0}
-    this.handleEvent = this.handleEvent.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange (e) {

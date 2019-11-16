@@ -51,7 +51,6 @@ class GuitarAmp extends React.Component {
         // connect input through chain and to output.
       }
       if (i === lastEffectInChain) {
-        audioNode.output.connect()
         // connect to master output.
       } else {
         // connect to next index input.

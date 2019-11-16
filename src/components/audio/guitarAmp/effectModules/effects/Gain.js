@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import '../../../../../styles/audio/guitarAmp/effectModules.scss'
 
 class Gain extends Component {
   constructor (props) {
@@ -40,7 +41,8 @@ class Gain extends Component {
     // Tie knob changes to state props.
     // display showing state props?
     return (
-      <div>
+      <div className='gain'>
+        <h3 className='moduleTitle'>Gain</h3>
         <input type='range' min='0' max='10' defaultValue='0' />
         <button type='button'>Switcha</button>
       </div>
