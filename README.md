@@ -1,3 +1,10 @@
+### Remaking https://amptime.com
+## Features
+# Adding more effects, more control with more params.
+# Fully usercontrolled experience with custom built chains.
+# Adding more apps, sequencer, midi support and more.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
