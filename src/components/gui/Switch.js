@@ -5,7 +5,9 @@ class Switch extends Component {
   componentDidMount () {
     ReactDOM.findDOMNode(this).addEventListener('click', this.props.onClick)
   }
-
+  componentWillUnmount () {
+    ReactDOM.findDOMNode(this).removeEventListener('click', this.props.onClick, false)
+  }
   render () {
     return (
       <webaudio-switch width={this.props.width} height={this.props.height} id='powerSwitch' data-active='false' invert='0' outline='0' />
