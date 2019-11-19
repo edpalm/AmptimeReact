@@ -84,13 +84,11 @@ class GuitarAmp extends React.Component {
 
   componentDidUpdate () {
     if (this.effectChain.length > 0) {
-      console.log('added new effect')
       this.setUpEffectChain()
     }
   }
 
   render () {
-    // Add master gain component in guitarAmpToolbar
     const effectModules = this.state.effectModules.map(effectModule => <EffectModule key={effectModule.effectID} effectType={effectModule.effectType} effectChain={this.effectChain} audioCtx={this.audioCtx} id={effectModule.effectID} />)
 
     return (
