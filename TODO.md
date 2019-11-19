@@ -4,6 +4,7 @@
 # Presets routing
 # Save presets to db
 ## Frontend
+# get logged in user status before render
 # localstorage for current chain setup
 # Add effect-modules
 # Presets when logged in
@@ -16,5 +17,6 @@
 # Reverse Proxy(nginx)
 # Https
 
-## Misc
-# Consistent names for eventhandlers.
+## Maybe
+# Oauth facebook?
+# rtc, sockets?
