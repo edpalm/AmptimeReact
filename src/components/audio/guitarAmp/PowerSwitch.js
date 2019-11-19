@@ -7,6 +7,8 @@ class PowerSwitch extends Component {
   constructor (props) {
     super(props)
     this.handleClick = this.handleClick.bind(this)
+    this.height = 64
+    this.width = 64
   }
   handleClick (e) {
     e.stopPropagation()
@@ -16,7 +18,7 @@ class PowerSwitch extends Component {
 
   render () {
     return (
-      <Switch onClick={this.handleClick} />
+      <Switch onClick={this.handleClick} height={this.height} width={this.width} />
     )
   }
 }

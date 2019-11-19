@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Knob from '../../../../gui/Knob'
+import Switch from '../../../../gui/Switch'
 import '../../../../../styles/audio/guitarAmp/effectModules.scss'
 
 class Gain extends Component {
@@ -6,6 +8,9 @@ class Gain extends Component {
     super(props)
     this.audioCtx = this.props.audioCtx
     this.setupGainEffect()
+    this.minValue = 0
+    this.maxValue = 10
+    this.diameter = 40
     this.state = {} // setup proper states for gain.
     /*
       Setup signal chain of audioCtx nodes for the gain effect module. this.props.audioCtx
@@ -35,16 +40,16 @@ class Gain extends Component {
     this.props.effectChain.push(this.effectModule)
   }
 
+  handleGainChange () {
+    console.log('changing gain')
+  }
   render () {
-    // html switch for on/off.
-    // html knob elements.
-    // Tie knob changes to state props.
-    // display showing state props?
+    // Move switch to EffectModule.js
     return (
       <div className='gain'>
         <h3 className='moduleTitle'>Gain</h3>
-        <input type='range' min='0' max='10' defaultValue='0' />
-        <button type='button'>Switcha</button>
+        <Knob onInput={this.handleGainChange} id='masterGain' min={this.minValue} max={this.maxValue} diameter={this.diameter} />
+        <Switch onClick={this.handleClick} height={this.height} width={this.width} />
       </div>
     )
   }

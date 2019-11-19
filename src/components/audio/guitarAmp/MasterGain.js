@@ -9,13 +9,16 @@ class MasterGain extends Component {
   constructor () {
     super()
     this.state = {value: 0}
+    // Knob Props
+    this.diameter = 64
     this.minValue = 0
     this.maxValue = 100
+    // Bind callback
     this.handleInput = this.handleInput.bind(this)
   }
 
   componentDidMount () {
-    // setup end destination gain node. att do Guitaramp.js endDestination variable.
+    // setup end destination gain node. Set as Guitaramp.js endDestination variable.
   }
 
   componentDidUpdate () {
@@ -23,6 +26,7 @@ class MasterGain extends Component {
     console.log(this.state.value)
   }
 
+  // Callback for wrapped event.
   handleInput (e) {
     this.setState({value: e.target.value})
     // change gainvalue.
@@ -30,7 +34,7 @@ class MasterGain extends Component {
 
   render () {
     return (
-      <Knob onInput={this.handleInput} id='masterGain' min={this.minValue} max={this.maxValue} />
+      <Knob onInput={this.handleInput} id='masterGain' min={this.minValue} max={this.maxValue} diameter={this.diameter} />
     )
   }
 }

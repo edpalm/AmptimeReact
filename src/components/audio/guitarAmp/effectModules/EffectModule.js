@@ -47,7 +47,7 @@ class EffectModule extends Component {
         // effectModule = <EQ7 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.GAIN:
-        effectModule = <Gain effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        effectModule = <Gain effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} id={this.props.id} />
         break
       case effects.REVERB:
         // effectModule = <Reverb effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
