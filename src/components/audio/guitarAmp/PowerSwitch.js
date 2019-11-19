@@ -1,22 +1,27 @@
 import React, { Component } from 'react'
 import '../../../styles/audio/guitarAmp/guitarAmp.scss'
+import Switch from '../../gui/Switch'
 
+// Wrapper for custom element.
 class PowerSwitch extends Component {
-  constructor () {
-    super()
-    this.state = { checked: false }
+  constructor (props) {
+    super(props)
+    this.handleClick = this.handleClick.bind(this)
   }
-
-  handleChange (checked) {
-    this.setState({ checked })
-    // set audio state in parent component
-    let powerIsOn = checked
+  handleClick (e) {
+    e.stopPropagation()
+    let powerIsOn
+    if (e.target.value === 1) {
+      powerIsOn = true
+    } else {
+      powerIsOn = false
+    }
     this.props.toggleAudioState(powerIsOn)
   }
 
   render () {
     return (
-      <webaudio-switch width='64' height='64' id='powerSwitch' data-active='false' invert='1' outline='0' />
+      <Switch onClick={this.handleClick} />
     )
   }
 }
