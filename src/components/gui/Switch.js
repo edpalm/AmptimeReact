@@ -8,7 +8,7 @@ class Switch extends Component {
 
   render () {
     return (
-      <webaudio-switch onClick={this.onClick} width='64' height='64' id='powerSwitch' data-active='false' invert='0' outline='0' />
+      <webaudio-switch width='64' height='64' id='powerSwitch' data-active='false' invert='0' outline='0' />
     )
   }
 }
