@@ -1,0 +1,60 @@
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+// Main Guitaramp
+.guitarAmp {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+// Guitaramp Toolbar
+.guitarAmpToolbar {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 120px;
+  background-color: yellow; // placeholder
+}
+
+// Toolbar elements
+#powerSwitch {
+  display: inline-block;
+  position: absolute;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 64px;
+}
+#addEffectButton {
+  display: inline-block;
+  position: absolute;
+  margin-left: 10%;
+  margin-top: 10px;
+  width: 64px;
+  height: 64px;
+  font-size: 40px;
+  background-color: none;
+}
+#volumeKnob {
+  display: inline-block;
+  position:absolute;
+  margin-left: 90%;
+  margin-top: 10px;
+}
+
+
+// Area for inserted effect-modules.
+.effectArea {
+  display: inline-block;
+  background-color: lightblue;
+  flex: 1;
+}
+
+
+

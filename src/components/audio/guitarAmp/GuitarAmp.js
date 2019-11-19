@@ -1,5 +1,5 @@
 import React from 'react'
-import '../../../styles/audio/guitarAmp/guitarAmp.css'
+import '../../../styles/audio/guitarAmp/guitarAmp.scss'
 import AddEffectModal from './AddEffectModal'
 import AddEffectButton from './AddEffectButton'
 import PowerSwitch from './PowerSwitch'
@@ -96,12 +96,12 @@ class GuitarAmp extends React.Component {
         <div className='guitarAmpToolbar'>
           <PowerSwitch toggleAudioState={this.toggleAudioState} />
           <AddEffectButton />
-          <AddEffectModal addEffectModule={this.addEffectModule} />
           <MasterGain />
         </div>
         <div className='effectArea'>
           {effectModules}
         </div>
+        <AddEffectModal addEffectModule={this.addEffectModule} />
       </div>
     )
   }

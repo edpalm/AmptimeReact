@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../../../styles/audio/guitarAmp/addEffectButton.css'
+import '../../../styles/audio/guitarAmp/guitarAmp.scss'
 
 class AddEffectButton extends Component {
   toggleAddEffectModal (e) {
@@ -8,7 +8,7 @@ class AddEffectButton extends Component {
 
   render () {
     return (
-      <button onClick={this.toggleAddEffectModal}className='addEffectButton' type='button'>Add Effect</button>
+      <button onClick={this.toggleAddEffectModal} id='addEffectButton' type='button'>&#43;</button>
     )
   }
 }

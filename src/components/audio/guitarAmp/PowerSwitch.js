@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import '../../../styles/audio/guitarAmp/switches.css'
-import Switch from 'react-switch'
+import '../../../styles/audio/guitarAmp/guitarAmp.scss'
 
 class PowerSwitch extends Component {
   constructor () {
     super()
     this.state = { checked: false }
-    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange (checked) {
@@ -18,7 +16,7 @@ class PowerSwitch extends Component {
 
   render () {
     return (
-      <Switch onChange={this.handleChange} checked={this.state.checked} uncheckedIcon={false} checkedIcon={false} className='powerSwitch' />
+      <webaudio-switch width='64' height='64' id='powerSwitch' data-active='false' invert='1' outline='0' />
     )
   }
 }

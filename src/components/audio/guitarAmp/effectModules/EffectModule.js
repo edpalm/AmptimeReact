@@ -52,6 +52,7 @@ class EffectModule extends Component {
       case effects.REVERB:
         // effectModule = <Reverb effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
+      default: break
     }
 
     return (

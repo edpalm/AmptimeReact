@@ -1,6 +1,6 @@
 
 import React, { Component } from 'react'
-import '../../../styles/audio/guitarAmp/addEffectButton.css'
+import '../../../styles/audio/guitarAmp/guitarAmp.scss'
 /*
  * TODO: change value of guitaramp.js mastergainnode on change
 */
@@ -8,7 +8,6 @@ class MasterGain extends Component {
   constructor () {
     super()
     this.state = {value: 0}
-    this.handleChange = this.handleChange.bind(this)
   }
 
   handleChange (e) {
@@ -18,13 +17,7 @@ class MasterGain extends Component {
 
   render () {
     return (
-      <input
-        onChange={this.handleChange}
-        type='range'
-        min='0'
-        max='10'
-        value={this.state.value}
-        step='0.1' />
+      <webaudio-knob id='volumeKnob' className='masterGain' src='img/sonatom.png' width='64' height='64' sprites='100' min='0' max='10' step='0.01' outline='0' />
     )
   }
 }
