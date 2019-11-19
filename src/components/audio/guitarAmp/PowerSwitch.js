@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import '../../../styles/audio/guitarAmp/guitarAmp.scss'
 import Switch from '../../gui/Switch'
 
-// Wrapper for custom element.
+// Wrapper for custom element & events.
 class PowerSwitch extends Component {
   constructor (props) {
     super(props)
@@ -10,13 +10,8 @@ class PowerSwitch extends Component {
   }
   handleClick (e) {
     e.stopPropagation()
-    let powerIsOn
-    if (e.target.value === 1) {
-      powerIsOn = true
-    } else {
-      powerIsOn = false
-    }
-    this.props.toggleAudioState(powerIsOn)
+    e.preventDefault()
+    this.props.toggleAudioState()
   }
 
   render () {

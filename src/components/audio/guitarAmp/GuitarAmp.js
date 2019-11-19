@@ -25,6 +25,12 @@ class GuitarAmp extends React.Component {
     this.getUserAudioSource()
   }
 
+  componentDidUpdate () {
+    if (this.effectChain.length > 0) {
+      this.setUpEffectChain()
+    }
+  }
+
   setupAudioCtx () {
     let AudioContext = window.AudioContext || window.webkitAudioContext
     this.audioCtx = new AudioContext({
@@ -60,11 +66,11 @@ class GuitarAmp extends React.Component {
   }
 
   // callback for powerswitch
-  toggleAudioState (powerIsOn) {
-    if (powerIsOn) {
-      this.audioCtx.resume()
+  async toggleAudioState () {
+    if (this.audioCtx.state === 'suspended') {
+      await this.audioCtx.resume()
     } else {
-      this.audioCtx.suspend()
+      await this.audioCtx.suspend()
     }
   }
 
@@ -80,12 +86,6 @@ class GuitarAmp extends React.Component {
 
     let newArrayChain = this.state.effectModules.concat(effectModule)
     this.setState({effectModules: newArrayChain})
-  }
-
-  componentDidUpdate () {
-    if (this.effectChain.length > 0) {
-      this.setUpEffectChain()
-    }
   }
 
   render () {
