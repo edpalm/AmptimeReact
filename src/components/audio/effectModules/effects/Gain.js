@@ -28,13 +28,14 @@ class Gain extends Component {
     this.chainGain2 = this.audioCtx.createGain()
     this.chainGain1.gain.setValueAtTime(0, this.audioCtx.currentTime)
 
-    this.testGain = this.audioCtx.createGain()
-    this.testGain.gain.setValueAtTime(0, this.audioCtx.currentTime)
+    this.endGain = this.audioCtx.createGain()
+    this.endGain.gain.setValueAtTime(0, this.audioCtx.currentTime)
 
     this.effectModule = {
+      id: this.props.id,
       input: this.gain,
       internalChain: [this.chainGain1, this.chainGain1],
-      output: this.testGain
+      output: this.endGain
     }
 
     this.props.effectChain.push(this.effectModule)

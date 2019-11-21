@@ -2,16 +2,11 @@
 import React, { Component } from 'react'
 import Knob from '../../../gui/Knob'
 import '../../../../styles/guitarAmp/guitarAmp.scss'
-/*
- * TODO: change value of guitaramp.js mastergainnode on change
-*/
+
 class MasterGain extends Component {
   constructor (props) {
     super(props)
     this.state = {value: 0} // Default gain value
-
-    // Gain Props
-    // this.defaultGainValue = 1
     // Bind callback
     this.handleInput = this.handleInput.bind(this)
   }
@@ -20,14 +15,11 @@ class MasterGain extends Component {
   componentDidMount () {
     this.masterGain = this.props.audioCtx.createGain()
     this.masterGain.gain.setValueAtTime(this.state.value, this.props.audioCtx.currentTime)
-    // setup guitaramp.js destination node.
+    this.props.masterGain.push(this.masterGain)
   }
 
   componentDidUpdate () {
-    console.log(this.state.value)
-    // this.masterGain.gain.value = this.state.value
-    // this.masterGain.gain.setTargetAtTime(this.state.value, this.props.audioCtx.currentTime, 0.5)
-    // change gainvalue.
+    this.masterGain.gain.setValueAtTime(this.state.value, this.props.audioCtx.currentTime)
   }
 
   // Callback for wrapped event.
@@ -39,9 +31,9 @@ class MasterGain extends Component {
     // Knob Props
     let id = 'masterGain'
     let src = ''
-    let value = 1
-    let defValue = 1
-    let min = 1
+    let value = 0
+    let defValue = 0
+    let min = 0
     let max = 10
     let step = 0.01
     let width = 0

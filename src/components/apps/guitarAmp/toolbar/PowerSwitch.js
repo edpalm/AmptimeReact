@@ -16,8 +16,39 @@ class PowerSwitch extends Component {
   }
 
   render () {
+    // Switch props
+    let id = 'powerSwitch'
+    let src = '' // add src switch image
+    let value = 0
+    let defvalue = 0
+    let width = 64 // css-able?
+    let height = 64 // css-able?
+    let type = 'toggle'
+    let group = null
+    let invert = 0
+    let tooltip = null
+    let enable = 1
+    let outline = 1
+    let midilearn = null
+    let midicc = null
+
     return (
-      <Switch onClick={this.handleClick} height={this.height} width={this.width} id='powerSwitch' />
+      <Switch
+        onClick={this.handleClick}
+        id={id}
+        src={src}
+        value={value}
+        defvalue={defvalue}
+        width={width}
+        height={height}
+        type={type}
+        group={group}
+        invert={invert}
+        tooltip={tooltip}
+        enable={enable}
+        outline={outline}
+        midilearn={midilearn}
+        midicc={midicc} />
     )
   }
 }

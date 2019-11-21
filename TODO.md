@@ -4,8 +4,9 @@
 # Presets routing
 # Save presets to db
 ## Frontend
-# get logged in user status before render
-# localstorage for current chain setup
+# localstorage for last used settings ?
+# Keyboard Drummer App
+# Sequencer App - integrate with effect modules?
 # Add effect-modules
 # Presets when logged in
 # Crud Presets

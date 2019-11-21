@@ -10,11 +10,17 @@ class GuitarAmp extends React.Component {
   constructor (props) {
     super(props)
     this.setupAudioCtx()
-    this.state = {effectModules: []}
+    this.getUserAudioSource()
+
+    this.state = {
+      audioSourceConnected: false,
+      effectModules: []
+    }
 
     this.effectID = 0
     this.effectModules = []
     this.effectChain = []
+    this.masterGain = []
 
     // Callback binds
     this.addEffectModule = this.addEffectModule.bind(this)
@@ -23,11 +29,11 @@ class GuitarAmp extends React.Component {
 
   componentDidMount () {
     // this.setupAudioCtx()
-    this.getUserAudioSource()
+    // this.setUpEffectChain()
   }
 
   componentDidUpdate () {
-    if (this.effectChain.length > 0) {
+    if (this.state.audioSourceConnected) {
       this.setUpEffectChain()
     }
   }
@@ -43,26 +49,32 @@ class GuitarAmp extends React.Component {
   async getUserAudioSource () {
     let stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false })
     this.source = this.audioCtx.createMediaStreamSource(stream)
+    this.setState({audioSourceConnected: true})
   }
 
   setUpEffectChain () {
-    this.source.connect(this.effectChain[0].input) // connect source to 1st node in chain.
-
-    const lastEffectInChain = this.effectChain.length - 1
-
-    this.effectChain.forEach((audioNode, i) => {
-      if (audioNode.internalChain.length === 0) {
+    // Disconnect all nodes.
+    // Reconnect all nodes.
+    if (this.effectChain.length === 0) {
+      this.source.connect(this.masterGain[0])
+    } else if (this.effectChain.length > 1) {
+      // this.source.connect(this.effectChain[0]) // connect source to 1st node in chain.
+      const lastEffectInChain = this.effectChain.length - 1
+      this.effectChain.forEach((audioNode, i) => {
+        if (audioNode.internalChain.length === 0) {
         // connect node input to node output directly.
-        audioNode.input.connect(audioNode.output)
-      } else {
+        //  audioNode.input.connect(audioNode.output)
+        } else {
         // connect input through chain and to output.
-      }
-      if (i === lastEffectInChain) {
+        }
+        if (i === lastEffectInChain) {
         // connect to master output.
-      } else {
+        } else {
         // connect to next index input.
-      }
-    })
+        }
+      })
+    }
+    this.masterGain[0].connect(this.audioCtx.destination)
     console.log(this.source)
   }
 
@@ -70,8 +82,10 @@ class GuitarAmp extends React.Component {
   async toggleAudioState () {
     if (this.audioCtx.state === 'suspended') {
       await this.audioCtx.resume()
+      console.log(this.audioCtx.state)
     } else {
       await this.audioCtx.suspend()
+      console.log(this.audioCtx.state)
     }
   }
 
@@ -90,14 +104,19 @@ class GuitarAmp extends React.Component {
   }
 
   render () {
-    const effectModules = this.state.effectModules.map(effectModule => <EffectModule key={effectModule.effectID} effectType={effectModule.effectType} effectChain={this.effectChain} audioCtx={this.audioCtx} id={effectModule.effectID} />)
-
+    const effectModules =
+      this.state.effectModules.map(effectModule => <EffectModule
+        key={effectModule.effectID}
+        effectType={effectModule.effectType}
+        effectChain={this.effectChain}
+        audioCtx={this.audioCtx}
+        id={effectModule.effectID} />)
     return (
       <div className='guitarAmp'>
         <div className='guitarAmpToolbar'>
           <PowerSwitch toggleAudioState={this.toggleAudioState} />
           <AddEffectButton />
-          <MasterGain audioCtx={this.audioCtx} />
+          <MasterGain audioCtx={this.audioCtx} masterGain={this.masterGain} />
         </div>
         <div className='effectArea'>
           {effectModules}

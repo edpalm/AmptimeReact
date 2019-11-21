@@ -11,7 +11,21 @@ class Switch extends Component {
   }
   render () {
     return (
-      <webaudio-switch width={this.props.width} height={this.props.height} id={this.props.id} data-active='false' invert='0' outline='0' />
+      <webaudio-switch
+        src={this.props.src}
+        value={this.props.value}
+        defvalue={this.props.defvalue}
+        width={this.props.width}
+        height={this.props.height}
+        id={this.props.id}
+        type={this.props.type}
+        group={this.props.group}
+        invert={this.props.invert}
+        tooltip={this.props.tooltip}
+        enable={this.props.enable}
+        outline={this.props.outline}
+        midilearn={this.props.midilearn}
+        midicc={this.props.midicc} />
     )
   }
 }
