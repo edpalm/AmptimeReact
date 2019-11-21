@@ -46,13 +46,16 @@ class MasterGain extends Component {
     let step = 0.01
     let width = 0
     let height = 0
+    let diameter = 64
     let sprites = 0
     let sensitivity = 1
     let valuetip = 1
     let tooltip = null
+    let conv = null
     let enable = 1
     let outline = 1
-    let diameter = 64
+    let midilearn = 0
+    let midicc = null
 
     return (
       <Knob onInput={this.handleInput}
@@ -65,13 +68,16 @@ class MasterGain extends Component {
         step={step}
         width={width}
         height={height}
+        diameter={diameter}
         sprites={sprites}
         sensitivity={sensitivity}
         valuetip={valuetip}
         tooltip={tooltip}
+        conv={conv}
         enable={enable}
         outline={outline}
-        diameter={diameter} />
+        midilearn={midilearn}
+        midicc={midicc} />
     )
   }
 }
