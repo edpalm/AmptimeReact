@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
-import Knob from '../../gui/Knob'
-import '../../../styles/audio/guitarAmp/guitarAmp.scss'
+import Knob from '../../../gui/Knob'
+import '../../../../styles/guitarAmp/guitarAmp.scss'
 /*
  * TODO: change value of guitaramp.js mastergainnode on change
 */

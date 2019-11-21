@@ -1,10 +1,10 @@
 import React from 'react'
-import '../../../styles/audio/guitarAmp/guitarAmp.scss'
+import '../../../styles/guitarAmp/guitarAmp.scss'
 import AddEffectModal from './AddEffectModal'
-import AddEffectButton from './AddEffectButton'
-import PowerSwitch from './PowerSwitch'
-import MasterGain from './MasterGain'
-import EffectModule from './effectModules/EffectModule'
+import AddEffectButton from './toolbar/AddEffectButton'
+import PowerSwitch from './toolbar/PowerSwitch'
+import MasterGain from './toolbar/MasterGain'
+import EffectModule from '../../audio/effectModules/EffectModule'
 
 class GuitarAmp extends React.Component {
   constructor (props) {

@@ -1,7 +1,7 @@
 import React from 'react'
-import GuitarAmp from './guitarAmp/GuitarAmp'
+import GuitarAmp from './apps/guitarAmp/GuitarAmp'
 
-class AudioController extends React.Component {
+class AppSelector extends React.Component {
   render () {
     // send loggedin status as prop, render preset tools if logged in.
     return (
@@ -10,4 +10,4 @@ class AudioController extends React.Component {
   }
 }
 
-export default AudioController
+export default AppSelector
