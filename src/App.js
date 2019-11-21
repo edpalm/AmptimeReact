@@ -14,7 +14,7 @@ const fetch = require('node-fetch')
 class App extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {}
+    this.state = {isLoggedIn: false}
   }
 
   // move to constructor?
