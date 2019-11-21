@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
-// Wrapper for webaudio switch custom element.
+// Wrapper for WebAudioControls Switch.
 class Switch extends Component {
   componentDidMount () {
     ReactDOM.findDOMNode(this).addEventListener('click', this.props.onClick)

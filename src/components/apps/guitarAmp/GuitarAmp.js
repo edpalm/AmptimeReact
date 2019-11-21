@@ -9,6 +9,7 @@ import EffectModule from '../../audio/effectModules/EffectModule'
 class GuitarAmp extends React.Component {
   constructor (props) {
     super(props)
+    this.setupAudioCtx()
     this.state = {effectModules: []}
 
     this.effectID = 0
@@ -21,7 +22,7 @@ class GuitarAmp extends React.Component {
   }
 
   componentDidMount () {
-    this.setupAudioCtx()
+    // this.setupAudioCtx()
     this.getUserAudioSource()
   }
 
@@ -96,7 +97,7 @@ class GuitarAmp extends React.Component {
         <div className='guitarAmpToolbar'>
           <PowerSwitch toggleAudioState={this.toggleAudioState} />
           <AddEffectButton />
-          <MasterGain />
+          <MasterGain audioCtx={this.audioCtx} />
         </div>
         <div className='effectArea'>
           {effectModules}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 
+// Wrapper for WebAudioControls knob.
 class Knob extends Component {
   componentDidMount () {
     ReactDOM.findDOMNode(this).addEventListener('input', this.props.onInput)
@@ -12,7 +13,21 @@ class Knob extends Component {
 
   render () {
     return (
-      <webaudio-knob id={this.props.id} min={this.props.min} max={this.props.max} diameter={this.props.diameter} data-active='false' invert='0' outline='0' />
+      <webaudio-knob src={this.props.src}
+        value={this.props.value}
+        defvalue={this.props.defvalue}
+        min={this.props.min}
+        max={this.props.max}
+        step={this.props.step}
+        width={this.props.width}
+        height={this.props.height}
+        sprites={this.props.sprites}
+        sensitivity={this.props.sensitivity}
+        valuetip={this.props.valuetip}
+        tooltip={this.props.tooltip}
+        enable={this.props.enable}
+        outline={this.props.outline}
+        diameter={this.props.diameter} id={this.props.id} />
     )
   }
 }
