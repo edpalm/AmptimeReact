@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import '../../../styles/audio/guitarAmp/guitarAmp.scss'
-import Switch from '../../gui/Switch'
+import '../../../../styles/guitarAmp/guitarAmp.scss'
+import Switch from '../../../gui/Switch'
 
 // Wrapper for custom element & events.
 class PowerSwitch extends Component {

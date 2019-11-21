@@ -3,7 +3,7 @@ import React from 'react'
 import './styles/App.css'
 import AboutButton from './components/about/AboutButton'
 import LoginController from './components/authentication/LoginController'
-import AudioController from './components/audio/AudioController'
+import AppSelector from './components/AppSelector'
 
 import AboutModal from './components/about/AboutModal'
 import LoginModal from './components/authentication/LoginModal'
@@ -41,7 +41,7 @@ class App extends React.Component {
         <div className='toolbar'>
           <p>Application choice toolbar</p>
         </div>
-        <AudioController isLoggedIn={this.state.isLoggedIn} />
+        <AppSelector isLoggedIn={this.state.isLoggedIn} />
         <AboutModal />
         <LoginModal />
         <RegisterModal />

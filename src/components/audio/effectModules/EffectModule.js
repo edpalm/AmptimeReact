@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Gain from './effects/Gain'
-import '../../../../styles/audio/guitarAmp/effectModules.scss'
+import '../../../styles/guitarAmp/guitarEffects.scss'
 
 // Controller & Facade for effect modules.
 class EffectModule extends Component {
