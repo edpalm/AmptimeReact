@@ -7,20 +7,15 @@ class Gain extends Component {
   constructor (props) {
     super(props)
     this.audioCtx = this.props.audioCtx
-    this.setupGainEffect()
-    this.minValue = 0
-    this.maxValue = 10
-    this.diameter = 40
     this.state = {gainValue: 0} // setup proper states for gain.
-    /*
-      Setup signal chain of audioCtx nodes for the gain effect module. this.props.audioCtx
-      Set initial state values
-    */
+    this.setupGainEffect()
+
+    this.handleGainChange = this.handleGainChange.bind(this)
   }
 
   setupGainEffect () {
     this.gain = this.audioCtx.createGain()
-    this.gain.gain.setValueAtTime(0, this.audioCtx.currentTime)
+    this.gain.gain.setValueAtTime(this.state.gainValue, this.audioCtx.currentTime)
 
     this.delay = this.audioCtx.createDelay()
     this.compressor = this.audioCtx.createDynamicsCompressor()
@@ -35,15 +30,60 @@ class Gain extends Component {
     this.props.effectChain.push(this.effectModule)
   }
 
-  handleGainChange () {
+  componentDidUpdate () {
+    console.log(this.state.gainValue)
+    this.gain.gain.setValueAtTime(this.state.gainValue, this.audioCtx.currentTime)
+  }
+
+  handleGainChange (e) {
+    this.setState({gainValue: e.target.value})
     console.log('changing gain')
   }
   render () {
-    // Move switch to EffectModule.js
+     // Knob Props
+    let id = ''
+    let src = ''
+    let value = 0
+    let defValue = 0
+    let min = 0
+    let max = 10
+    let step = 0.01
+    let width = 0
+    let height = 0
+    let diameter = 64
+    let sprites = 0
+    let sensitivity = 1
+    let valuetip = 1
+    let tooltip = null
+    let conv = null
+    let enable = 1
+    let outline = 1
+    let midilearn = 0
+    let midicc = null
+
     return (
-      <div className='gain'>
+      <div>
         <h3 className='moduleTitle'>Gain</h3>
-        <Knob onInput={this.handleGainChange} id='masterGain' min={this.minValue} max={this.maxValue} diameter={this.diameter} />
+        <Knob onInput={this.handleGainChange}
+          id={id}
+          src={src}
+          value={value}
+          defvalue={defValue}
+          min={min}
+          max={max}
+          step={step}
+          width={width}
+          height={height}
+          diameter={diameter}
+          sprites={sprites}
+          sensitivity={sensitivity}
+          valuetip={valuetip}
+          tooltip={tooltip}
+          conv={conv}
+          enable={enable}
+          outline={outline}
+          midilearn={midilearn}
+          midicc={midicc} />
         <Switch onClick={this.handleClick} height={this.height} width={this.width} />
       </div>
     )

@@ -48,7 +48,8 @@ class GuitarAmp extends React.Component {
   }
 
   setUpEffectChain () {
-    // Disconnect all nodes.
+    /* // Disconnect all nodes.
+    this.disconnectChain()
     // Reconnect all nodes.
     let noEffectsHasBeenAdded = this.effectChain.length === 0
     if (noEffectsHasBeenAdded) {
@@ -91,7 +92,26 @@ class GuitarAmp extends React.Component {
       })
     }
     this.masterGain[0].connect(this.audioCtx.destination)
-    console.log(this.audioCtx)
+    console.log(this.audioCtx) */
+
+// REFACTOR IMPROVEMENT
+    // if no effects.
+      // connect source to masterGain
+
+    // else
+    // disconnect last added effect from it's destination.
+    // connect last effect to new effect input
+
+    // if internalChain
+      // connect new effect input to first in internalchain
+      // foreach internal
+        // if last internal node
+          // connect to output
+        // else
+          // connect to next internal
+    // else
+       // connect input to output
+    // connect output to mastergain
   }
 
   // callback for powerswitch
