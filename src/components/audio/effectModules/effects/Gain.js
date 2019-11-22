@@ -7,7 +7,7 @@ class Gain extends Component {
   constructor (props) {
     super(props)
     this.audioCtx = this.props.audioCtx
-    this.state = {gainValue: 0} // setup proper states for gain.
+    this.state = {gainValue: 1} // setup proper states for gain.
     this.setupGainEffect()
 
     this.handleGainChange = this.handleGainChange.bind(this)
@@ -16,9 +16,6 @@ class Gain extends Component {
   setupGainEffect () {
     this.gain = this.audioCtx.createGain()
     this.gain.gain.setValueAtTime(this.state.gainValue, this.audioCtx.currentTime)
-
-    this.delay = this.audioCtx.createDelay()
-    this.compressor = this.audioCtx.createDynamicsCompressor()
 
     this.effectModule = {
       id: this.props.id,
@@ -43,9 +40,9 @@ class Gain extends Component {
      // Knob Props
     let id = ''
     let src = ''
-    let value = 0
-    let defValue = 0
-    let min = 0
+    let value = 1
+    let defValue = 1
+    let min = 1
     let max = 10
     let step = 0.01
     let width = 0

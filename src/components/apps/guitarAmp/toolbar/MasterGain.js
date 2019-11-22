@@ -16,6 +16,7 @@ class MasterGain extends Component {
     this.masterGain = this.props.audioCtx.createGain()
     this.masterGain.gain.setValueAtTime(this.state.value, this.props.audioCtx.currentTime)
     this.props.masterGain.push(this.masterGain)
+    this.masterGain.connect(this.props.audioCtx.destination)
   }
 
   componentDidUpdate () {
