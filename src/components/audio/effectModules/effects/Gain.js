@@ -11,7 +11,7 @@ class Gain extends Component {
     this.minValue = 0
     this.maxValue = 10
     this.diameter = 40
-    this.state = {} // setup proper states for gain.
+    this.state = {gainValue: 0} // setup proper states for gain.
     /*
       Setup signal chain of audioCtx nodes for the gain effect module. this.props.audioCtx
       Set initial state values
@@ -22,20 +22,14 @@ class Gain extends Component {
     this.gain = this.audioCtx.createGain()
     this.gain.gain.setValueAtTime(0, this.audioCtx.currentTime)
 
-    this.chainGain1 = this.audioCtx.createGain()
-    this.chainGain1.gain.setValueAtTime(0, this.audioCtx.currentTime)
-
-    this.chainGain2 = this.audioCtx.createGain()
-    this.chainGain1.gain.setValueAtTime(0, this.audioCtx.currentTime)
-
-    this.endGain = this.audioCtx.createGain()
-    this.endGain.gain.setValueAtTime(0, this.audioCtx.currentTime)
+    this.delay = this.audioCtx.createDelay()
+    this.compressor = this.audioCtx.createDynamicsCompressor()
 
     this.effectModule = {
       id: this.props.id,
       input: this.gain,
-      internalChain: [this.chainGain1, this.chainGain1],
-      output: this.endGain
+      internalChain: [],
+      output: this.gain
     }
 
     this.props.effectChain.push(this.effectModule)

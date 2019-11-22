@@ -27,11 +27,6 @@ class GuitarAmp extends React.Component {
     this.toggleAudioState = this.toggleAudioState.bind(this)
   }
 
-  componentDidMount () {
-    // this.setupAudioCtx()
-    // this.setUpEffectChain()
-  }
-
   componentDidUpdate () {
     if (this.state.audioSourceConnected) {
       this.setUpEffectChain()
@@ -55,27 +50,48 @@ class GuitarAmp extends React.Component {
   setUpEffectChain () {
     // Disconnect all nodes.
     // Reconnect all nodes.
-    if (this.effectChain.length === 0) {
+    let noEffectsHasBeenAdded = this.effectChain.length === 0
+    if (noEffectsHasBeenAdded) {
       this.source.connect(this.masterGain[0])
-    } else if (this.effectChain.length > 1) {
-      // this.source.connect(this.effectChain[0]) // connect source to 1st node in chain.
-      const lastEffectInChain = this.effectChain.length - 1
-      this.effectChain.forEach((audioNode, i) => {
-        if (audioNode.internalChain.length === 0) {
-        // connect node input to node output directly.
-        //  audioNode.input.connect(audioNode.output)
+    } else {
+      this.source.connect(this.effectChain[0].input) // connect to first effect input.
+      let lastEffectInChain = this.effectChain.length - 1
+
+      this.effectChain.forEach((effect, i) => {
+        let hasInternalChain = effect.internalChain.length > 0 // check if internalchain exists
+        if (hasInternalChain) {
+          effect.input.connect(effect.internalChain[0]) // connect effectmodule input to first in internalchain
+          let lastInternalNode = effect.internalChain.length - 1
+          effect.internalChain.forEach((internalNode, j) => {
+            if (j === lastInternalNode) {
+              console.log('last internal')
+              console.log('connecting to output')
+              internalNode.connect(effect.output) // Connect to effectmodule output
+            } else {
+              console.log('not last internal')
+              internalNode.connect(effect.internalChain[j + 1]) // Connect to next internal node.
+            }
+          })
         } else {
-        // connect input through chain and to output.
+        // no internal chain
+          effect.input.connect(effect.output)
+          console.log('empty internal chain')
+          console.log('connecting to output')
         }
         if (i === lastEffectInChain) {
-        // connect to master output.
+          console.log('connecting to masterGain')
+          effect.output.connect(this.masterGain[0])
+          // if last effectModule. connect output to mastergain
         } else {
-        // connect to next index input.
+          console.log('connecting to next effect input')
+          let nextEffect = i + 1
+          effect.output.connect(this.effectChain[nextEffect].input)
+          // if not last effectmodule. connect output to next effect input.
         }
       })
     }
     this.masterGain[0].connect(this.audioCtx.destination)
-    console.log(this.source)
+    console.log(this.audioCtx)
   }
 
   // callback for powerswitch
