@@ -3,7 +3,8 @@ import React from 'react'
 import './styles/App.css'
 import AboutButton from './components/about/AboutButton'
 import LoginController from './components/authentication/LoginController'
-import AppSelector from './components/AppSelector'
+import AppSelectionBar from './components/AppSelectionBar'
+import AppArea from './components/AppArea'
 
 import AboutModal from './components/about/AboutModal'
 import LoginModal from './components/authentication/LoginModal'
@@ -14,7 +15,10 @@ const fetch = require('node-fetch')
 class App extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {isLoggedIn: false}
+    this.state = {
+      isLoggedIn: false,
+      selectedApp: ''
+    }
   }
 
   // move to constructor?
@@ -38,10 +42,8 @@ class App extends React.Component {
           <AboutButton />
           <LoginController isLoggedIn={this.state.isLoggedIn} />
         </nav>
-        <div className='toolbar'>
-          <p>Application choice toolbar</p>
-        </div>
-        <AppSelector isLoggedIn={this.state.isLoggedIn} />
+        <AppSelectionBar />
+        <AppArea isLoggedIn={this.state.isLoggedIn} />
         <AboutModal />
         <LoginModal />
         <RegisterModal />

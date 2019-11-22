@@ -9,8 +9,9 @@ html,body
 
 // Main Guitaramp
 .guitarAmp {
+  display: none;
   min-height: 100vh;
-  display: flex;
+  /* display: flex; */
   flex-direction: column;
 }
 
