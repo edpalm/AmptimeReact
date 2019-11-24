@@ -33,6 +33,8 @@ class AppSelectionBar extends Component {
         // set other app display styles.
         break
       case this.apps.DRUMKEYS:
+        document.querySelector('.guitarAmp').style.display = 'none'
+        // set other app display styles.
         console.log('drumkeys')
     }
   }
@@ -40,8 +42,8 @@ class AppSelectionBar extends Component {
   render () {
     return (
       <div className='appSelectionBar'>
-        <button onClick={this.handleClick} className='appSelectButton' value='guitarAmp' type='button' >App 1</button>
-        <button onClick={this.handleClick} className='appSelectButton' value='drumKeys' >App 2</button>
+        <button onClick={this.handleClick} className='appSelectButton' value={this.apps.GUITARAMP} type='button' >App 1</button>
+        <button onClick={this.handleClick} className='appSelectButton' value={this.apps.DRUMKEYS} >App 2</button>
       </div>
     )
   }
