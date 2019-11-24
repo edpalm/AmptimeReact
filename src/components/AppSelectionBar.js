@@ -42,8 +42,8 @@ class AppSelectionBar extends Component {
   render () {
     return (
       <div className='appSelectionBar'>
-        <button onClick={this.handleClick} className='appSelectButton' value={this.apps.GUITARAMP} type='button' >App 1</button>
-        <button onClick={this.handleClick} className='appSelectButton' value={this.apps.DRUMKEYS} >App 2</button>
+        <button onClick={this.handleClick} className='appSelectButton' value={this.apps.GUITARAMP} type='button' >G-Amp</button>
+        <button onClick={this.handleClick} className='appSelectButton' value={this.apps.DRUMKEYS} >D-Keys</button>
       </div>
     )
   }

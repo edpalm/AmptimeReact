@@ -48,7 +48,7 @@ class GuitarAmp extends React.Component {
   }
 
   setUpEffectChain () {
-    let noEffectHasBeenAdded = this.effectChain.length === 0 // move to state?
+    let noEffectHasBeenAdded = this.effectChain.length === 0
     let isFirstEffect = this.effectChain.length === 1
 
     let masterGain = this.masterGain[0]
