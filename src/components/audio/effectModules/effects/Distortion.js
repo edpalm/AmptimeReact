@@ -3,19 +3,19 @@ import Knob from '../../../gui/Knob'
 import Switch from '../../../gui/Switch'
 import '../../../../styles/guitarAmp/guitarEffects.scss'
 
-class Gain extends Component {
+class Distortion extends Component {
   constructor (props) {
     super(props)
     this.audioCtx = this.props.audioCtx
-    this.state = {gainValue: 1} // setup proper states for gain.
-    this.setupGain()
+    this.state = {distortionValue: 1} // setup proper states for gain.
+    this.setupDistortion()
 
     this.handleGainChange = this.handleGainChange.bind(this)
   }
 
-  setupGain () {
-    this.gain = this.audioCtx.createGain()
-    this.gain.gain.setValueAtTime(this.state.gainValue, this.audioCtx.currentTime)
+  setupDistortion () {
+    let distortion = this.audioCtx.createWaveShaper()
+    distortion.oversample = '4x'
 
     this.effectModule = {
       id: this.props.id,
@@ -87,4 +87,4 @@ class Gain extends Component {
   }
 }
 
-export default Gain
+export default Distortion

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Gain from './effects/Gain'
+import Distortion from './effects/Distortion'
 import '../../../styles/guitarAmp/guitarEffects.scss'
 
 // Controller & Facade for effect modules.
@@ -35,7 +36,7 @@ class EffectModule extends Component {
         // effectModule = <Delay effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.DISTORTION:
-        // effectModule = <Distortion effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        effectModule = <Distortion effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.EQ3:
         // effectModule = <EQ3 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
