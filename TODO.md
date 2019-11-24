@@ -21,3 +21,8 @@
 ## Maybe
 # Oauth facebook?
 # rtc, sockets?
+
+## Current wip
+# Implement Effects
+# Implement "remove effect"
+# Implement "rearrange effect"
