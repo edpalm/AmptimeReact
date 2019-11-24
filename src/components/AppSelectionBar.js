@@ -1,22 +1,39 @@
 import React, { Component } from 'react'
 
 class AppSelectionBar extends Component {
-  handleClick (e) {
-    e.stopPropagation()
-    e.preventDefault()
+  constructor (props) {
+    super(props)
 
-    const apps = {
+    this.apps = {
       GUITARAMP: 'guitarAmp',
       DRUMKEYS: 'drumKeys'
     }
 
-    console.log(e.target.value)
-    switch (e.target.value) {
-      case apps.GUITARAMP:
+    let defaultApp = this.apps.GUITARAMP
+
+    this.state = {
+      selectedApp: defaultApp
+    }
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick (e) {
+    e.stopPropagation()
+    e.preventDefault()
+
+    let selectedApp = e.target.value
+
+    this.setState({selectedApp: selectedApp})
+  }
+
+  componentDidUpdate () {
+    switch (this.state.selectedApp) {
+      case this.apps.GUITARAMP:
         document.querySelector('.guitarAmp').style.display = 'flex'
-        // other apps display = none
-        // add cases
+        // set other app display styles.
         break
+      case this.apps.DRUMKEYS:
+        console.log('drumkeys')
     }
   }
 
