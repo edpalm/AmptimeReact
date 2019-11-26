@@ -34,7 +34,6 @@
 ### Implement Effects
   * Cabinet. Params: 1 knob. ampsim amount.
   * Compressor. Params 4-5. threshhold, knee, ratio...
-  * Distortion. Params: 1 Knob. distortion amount
   * Reverb. Params: 3 knobs. Wet/Dry, Pre-delay, Decay.
   * Delay. Params: 2 knobs. Delaytime, feedback.
   * Eq. Highpass Params: Mode selection highpass. 1 slider, 1 knob. Selectable frequency and it's q-value.
@@ -46,5 +45,6 @@
   
 ### Implemented Effects
   * Gain. Params: 1 knob. Gain amount.
+  * Distortion. Params: 1 Knob. distortion amount
 ### Implement "remove effect"
 ### Implement "rearrange effect"
