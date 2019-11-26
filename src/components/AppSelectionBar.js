@@ -36,6 +36,10 @@ class AppSelectionBar extends Component {
         document.querySelector('.guitarAmp').style.display = 'none'
         // set other app display styles.
         console.log('drumkeys')
+        break
+      default:
+        // temp default
+        document.querySelector(`. + ${this.state.defaultApp}`).style.display = 'flex'
     }
   }
 

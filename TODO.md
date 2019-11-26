@@ -33,6 +33,7 @@
 ## Current Iteration : Effects
 ### Implement Effects
   * Cabinet. Params: 1 knob. ampsim amount.
+  * Compressor. Params 4-5. threshhold, knee, ratio...
   * Distortion. Params: 1 Knob. distortion amount
   * Reverb. Params: 3 knobs. Wet/Dry, Pre-delay, Decay.
   * Delay. Params: 2 knobs. Delaytime, feedback.

@@ -7,42 +7,56 @@ class Distortion extends Component {
   constructor (props) {
     super(props)
     this.audioCtx = this.props.audioCtx
-    this.state = {distortionValue: 1} // setup proper states for gain.
+    this.state = {distortionValue: 0}
     this.setupDistortion()
-
     this.handleGainChange = this.handleGainChange.bind(this)
   }
 
   setupDistortion () {
-    let distortion = this.audioCtx.createWaveShaper()
-    distortion.oversample = '4x'
-
+    this.distortion = this.audioCtx.createWaveShaper()
+    this.distortion.oversample = '4x'
+    this.distortion.curve = this.createCurve()
     this.effectModule = {
       id: this.props.id,
-      input: this.gain,
+      input: this.distortion,
       internalChain: [],
-      output: this.gain
+      output: this.distortion
     }
 
     this.props.effectChain.push(this.effectModule)
   }
+  createCurve () {
+    // Curvecreation inspired by Kevin Ennis
+    // @ http://stackoverflow.com/a/22313408/1090298
+    let k = this.state.distortionValue * 10
+    let sampleRate = typeof this.audioCtx.sampleRate === 'number' ? this.audioCtx.sampleRate : 44100
+    let deg = Math.PI / 180
+    let curve = new Float32Array(sampleRate)
+    let x
+    for (let i = 0; i < sampleRate; ++i) {
+      x = i * 2 / sampleRate - 1
+      curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x))
+    }
+    return curve
+  }
 
   componentDidUpdate () {
-    console.log(this.state.gainValue)
-    this.gain.gain.setValueAtTime(this.state.gainValue, this.audioCtx.currentTime)
+    console.log(this.state.distortionValue)
+    this.distortion.curve = this.createCurve()
+    console.log(this.distortion.curve)
   }
 
   handleGainChange (e) {
-    this.setState({gainValue: e.target.value})
-    console.log('changing gain')
+    this.setState({distortionValue: e.target.value})
   }
+
   render () {
      // Knob Props
     let id = ''
     let src = ''
-    let value = 1
-    let defValue = 1
-    let min = 1
+    let value = 0
+    let defValue = 0
+    let min = 0
     let max = 10
     let step = 0.01
     let width = 0
@@ -60,7 +74,7 @@ class Distortion extends Component {
 
     return (
       <div>
-        <h3 className='moduleTitle'>Gain</h3>
+        <h3 className='moduleTitle'>Distortion</h3>
         <Knob onInput={this.handleGainChange}
           id={id}
           src={src}
