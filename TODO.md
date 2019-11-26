@@ -23,7 +23,7 @@
 # rtc, sockets?
 
 ## Current Iteration : Effects
-# Implement Effects
+### Implement Effects
   * Cabinet. Params: 1 knob. ampsim amount.
   * Distortion. Params: 1 Knob. distortion amount
   * Reverb. Params: 3 knobs. Wet/Dry, Pre-delay, Decay.
@@ -35,7 +35,7 @@
   * Eq5. Params: 5 sliders. 5 knobs. selectable frequencies. Q-values
   * Chorus.
   
-# Implemented Effects
+### Implemented Effects
   * Gain. Params: 1 knob. Gain amount.
-# Implement "remove effect"
-# Implement "rearrange effect"
+### Implement "remove effect"
+### Implement "rearrange effect"
