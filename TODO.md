@@ -22,7 +22,20 @@
 # Oauth facebook?
 # rtc, sockets?
 
-## Current wip
+## Current Iteration : Effects
 # Implement Effects
+  * Cabinet. Params: 1 knob. ampsim amount.
+  * Distortion. Params: 1 Knob. distortion amount
+  * Reverb. Params: 3 knobs. Wet/Dry, Pre-delay, Decay.
+  * Delay. Params: 2 knobs. Delaytime, feedback.
+  * Eq. Highpass Params: Mode selection highpass. 1 slider, 1 knob. Selectable frequency and it's q-value.
+  * Eq. Lowpass Params: Mode selection highpass. 1 slider, 1 knob. Selectable frequency and it's q-value.
+  * Eq1. Params: 1 sliders. 1 knobs. selectable frequencies. Q-values
+  * Eq3. Params: 3 sliders. 3 knobs. selectable frequencies. Q-values
+  * Eq5. Params: 5 sliders. 5 knobs. selectable frequencies. Q-values
+  * Chorus.
+  
+# Implemented Effects
+  * Gain. Params: 1 knob. Gain amount.
 # Implement "remove effect"
 # Implement "rearrange effect"
