@@ -5,13 +5,20 @@
 ### Save presets to db
 ## Frontend
 ### localstorage for last used settings ?
-### Keyboard Drummer App
+### GuitarAmp
+  * Dynamic Audio Chain
+  * Presets
+### Keyboard Drummer
+  * Visual drumkit
+  * Play samples on keystrokes
+  * Selectable hotkeys
+  * Visually display each trigger
+  * Re-usable effects?
+  * Metronome with bpm and score.
 ### Sequencer App - integrate with effect modules?
-### Add effect-modules
 ### Presets when logged in
 ### Crud Presets
 ### Finish About-Modal, embed video showing demo?, attributions, contributions
-### Dynamic Audio Chain with web audio.
 ### Styles - sass
 ### Responsiveness for different viewports/screensizes
 
@@ -40,3 +47,7 @@
   * Gain. Params: 1 knob. Gain amount.
 ### Implement "remove effect"
 ### Implement "rearrange effect"
+
+# Implemented
+### Dynamic Audio Chain.
+### Add effect-modules
