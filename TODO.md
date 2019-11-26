@@ -47,7 +47,3 @@
   * Gain. Params: 1 knob. Gain amount.
 ### Implement "remove effect"
 ### Implement "rearrange effect"
-
-# Implemented
-### Dynamic Audio Chain.
-### Add effect-modules
