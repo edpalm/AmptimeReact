@@ -65,17 +65,6 @@ class GuitarAmp extends React.Component {
         previousEffect.output.disconnect(masterGain)
         previousEffect.output.connect(addedEffect.input)
       }
-      let hasInternalChain = addedEffect.internalChain.length > 0
-      if (hasInternalChain) {
-        let lastInternalNode = addedEffect.internalChain.length - 1
-        addedEffect.internalChain.forEach((internalNode, i) => {
-          if (i === lastInternalNode) {
-            internalNode.connect(addedEffect.output)
-          } else {
-            internalNode.connect(addedEffect.internalChain[i + 1])
-          }
-        })
-      }
       addedEffect.output.connect(masterGain)
     }
   }

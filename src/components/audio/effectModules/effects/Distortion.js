@@ -19,7 +19,6 @@ class Distortion extends Component {
     this.effectModule = {
       id: this.props.id,
       input: this.distortion,
-      internalChain: [],
       output: this.distortion
     }
 

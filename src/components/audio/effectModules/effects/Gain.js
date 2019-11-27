@@ -7,7 +7,9 @@ class Gain extends Component {
   constructor (props) {
     super(props)
     this.audioCtx = this.props.audioCtx
-    this.state = {gainValue: 1} // setup proper states for gain.
+    this.state = {
+      gainValue: 1
+    }
     this.setupGain()
 
     this.handleGainChange = this.handleGainChange.bind(this)
@@ -20,7 +22,6 @@ class Gain extends Component {
     this.effectModule = {
       id: this.props.id,
       input: this.gain,
-      internalChain: [],
       output: this.gain
     }
 

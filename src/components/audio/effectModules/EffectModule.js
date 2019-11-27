@@ -34,10 +34,10 @@ class EffectModule extends Component {
         // effectModule = <Compressor effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.DELAY:
-        effectModule = <Delay effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        effectModule = <Delay effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} id={this.props.id} />
         break
       case effects.DISTORTION:
-        effectModule = <Distortion effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        effectModule = <Distortion effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} id={this.props.id} />
         break
       case effects.EQ3:
         // effectModule = <EQ3 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />

@@ -10,7 +10,7 @@ class Delay extends Component {
     this.state = {
       timeValue: 0,
       feedbackValue: 0
-    } // setup proper states for gain.
+    }
     this.handleTimeChange = this.handleTimeChange.bind(this)
     this.handleFeedbackChange = this.handleFeedbackChange.bind(this)
     this.setupDelay()
@@ -18,28 +18,46 @@ class Delay extends Component {
 
   setupDelay () {
     console.log('setting up delay')
-    this.gain = this.audioCtx.createGain()
-    this.gain.gain.setValueAtTime(this.state.gainValue, this.audioCtx.currentTime)
+    this.inputGain = this.audioCtx.createGain()
+    this.delay = this.audioCtx.createDelay(100)
+    this.feedback = this.audioCtx.createGain()
+    this.bypass = this.audioCtx.createGain()
+
+    this.delay.delayTime.value = this.state.timeValue
+    this.feedback.gain.value = this.state.feedbackValue
+    this.bypass.gain.value = 1 // always at 1 for complete bypass.
+    this.inputGain.gain.value = 1 // always at 1 for complete input bypass.
+
+    this.inputGain.connect(this.delay)
+    this.inputGain.connect(this.bypass)
+    this.delay.connect(this.feedback)
+    this.feedback.connect(this.delay)
+    this.delay.connect(this.bypass)
 
     this.effectModule = {
       id: this.props.id,
-      input: this.gain,
-      internalChain: [],
-      output: this.gain
+      input: this.inputGain,
+      output: this.bypass
     }
 
     this.props.effectChain.push(this.effectModule)
   }
 
+  /* componentWillUnmount () {
+    disconnect all internal node connections
+  } */
+
   componentDidUpdate () {
-    console.log(this.state.timeValue)
-    console.log(this.state.feedbackValue)
+    this.delay.delayTime.setValueAtTime(this.state.timeValue, this.audioCtx.currentTime)
+    this.feedback.gain.setValueAtTime(this.state.feedbackValue, this.audioCtx.currentTime)
   }
 
   handleTimeChange (e) {
-    this.setState({timeValue: e.target.value}) 
+    this.setState({timeValue: e.target.value})
   }
+
   handleFeedbackChange (e) {
+    // Adjust value to represent actual amount of repetitions.
     this.setState({feedbackValue: e.target.value})
   }
 
@@ -61,23 +79,23 @@ class Delay extends Component {
 
     // Time Knob Props
     let timeKnobTitle = 'Time'
-    let timeValue = 1
-    let timeDefValue = 1
-    let timeMin = 1
+    let timeValue = 0
+    let timeDefValue = 0
+    let timeMin = 0
     let timeMax = 10
-    let timeStep = 0.01
+    let timeStep = 0.1
 
     // Feedback Knob Props
     let feedbackKnobTitle = 'Feedback'
-    let feedbackValue = 1
-    let feedbackDefValue = 1
-    let feedbackMin = 1
+    let feedbackValue = 0
+    let feedbackDefValue = 0
+    let feedbackMin = 0
     let feedbackMax = 10
-    let feedbackStep = 0.01
+    let feedbackStep = 0.1
 
     return (
       <div>
-        <h3 className='moduleTitle'>Gain</h3>
+        <h3 className='moduleTitle'>Delay</h3>
         <span>{timeKnobTitle}</span>
         <Knob onInput={this.handleTimeChange}
           id=''
