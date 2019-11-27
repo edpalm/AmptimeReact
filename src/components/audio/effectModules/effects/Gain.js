@@ -37,8 +37,8 @@ class Gain extends Component {
     console.log('changing gain')
   }
   render () {
-     // Knob Props
-    let id = ''
+     // Gain Knob Props
+    let gainKnobTitle = 'Gain'
     let src = ''
     let value = 1
     let defValue = 1
@@ -61,8 +61,8 @@ class Gain extends Component {
     return (
       <div>
         <h3 className='moduleTitle'>Gain</h3>
+        <span>{gainKnobTitle}</span>
         <Knob onInput={this.handleGainChange}
-          id={id}
           src={src}
           value={value}
           defvalue={defValue}

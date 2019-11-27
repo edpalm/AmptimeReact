@@ -14,6 +14,7 @@ class Knob extends Component {
   render () {
     return (
       <webaudio-knob src={this.props.src}
+        id={this.props.id}
         value={this.props.value}
         defvalue={this.props.defvalue}
         min={this.props.min}
@@ -27,7 +28,7 @@ class Knob extends Component {
         tooltip={this.props.tooltip}
         enable={this.props.enable}
         outline={this.props.outline}
-        diameter={this.props.diameter} id={this.props.id} />
+        diameter={this.props.diameter} />
     )
   }
 }
