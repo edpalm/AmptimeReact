@@ -48,8 +48,9 @@ class Delay extends Component {
   } */
 
   componentDidUpdate () {
+    let feedbackLoops = 1 / this.state.feedbackValue // gain 0 - 1.
     this.delay.delayTime.setValueAtTime(this.state.timeValue, this.audioCtx.currentTime)
-    this.feedback.gain.setValueAtTime(this.state.feedbackValue, this.audioCtx.currentTime)
+    this.feedback.gain.setValueAtTime(feedbackLoops, this.audioCtx.currentTime)
   }
 
   handleTimeChange (e) {
@@ -90,7 +91,7 @@ class Delay extends Component {
     let feedbackValue = 0
     let feedbackDefValue = 0
     let feedbackMin = 0
-    let feedbackMax = 10
+    let feedbackMax = 100
     let feedbackStep = 0.1
 
     return (
