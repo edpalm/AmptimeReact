@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-import EQ1 from './effects/EQ1'
+
 import Distortion from './effects/Distortion'
+import Cabinet from './effects/Cabinet'
+// import EQ1 from './effects/EQ1'
 import Delay from './effects/Delay'
 import Gain from './effects/Gain'
 import '../../../styles/guitarAmp/guitarEffects.scss'
@@ -28,7 +30,7 @@ class EffectModule extends Component {
 
     switch (selectedEffect) {
       case effects.CABINET:
-        // effectModule = <Cabinet effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        effectModule = <Cabinet effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.CHORUS:
           // effectModule = <Chorus effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
@@ -49,7 +51,7 @@ class EffectModule extends Component {
           // effectModule = <Highpass effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.EQ1:
-        effectModule = <EQ1 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        // effectModule = <EQ1 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.EQ3:
         // effectModule = <EQ3 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />

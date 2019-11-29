@@ -13,37 +13,36 @@ class Delay extends Component {
     this.audioCtx = this.props.audioCtx
     this.state = {
       time: 0,
-      feedback: 0
+      feedback: 1
     }
     this.handleTimeChange = this.handleTimeChange.bind(this)
     this.handleFeedbackChange = this.handleFeedbackChange.bind(this)
-    this.setupDelay()
   }
   /**
-   * * Setup Nodes and connect internal chain
-   * * Add to sound chain array
-   */
-  setupDelay () {
+  * * Setup Nodes and connect internal chain
+  * * Add to sound chain array
+  */
+  componentDidMount () {
     this.inputGain = this.audioCtx.createGain()
     this.delay = this.audioCtx.createDelay(100)
-    this.feedback = this.audioCtx.createGain()
-    this.bypass = this.audioCtx.createGain()
+    this.feedbackGain = this.audioCtx.createGain()
+    this.bypassGain = this.audioCtx.createGain()
 
-    this.delay.delayTime.value = this.state.time
-    this.feedback.gain.value = this.state.feedback
-    this.bypass.gain.value = 1 //* Do not change. Has to be at 1 for complete bypass.
-    this.inputGain.gain.value = 1 //* Do not change. Has to be at 1 for complete bypass.
+    this.delay.delayTime.value = 0
+    this.feedbackGain.gain.value = 0
+    this.bypassGain.gain.value = 1 //* Do not change. Has to be at 1 for complete bypassGain.
+    this.inputGain.gain.value = 1 //* Do not change. Has to be at 1 for complete bypassGain.
 
     this.inputGain.connect(this.delay)
-    this.inputGain.connect(this.bypass)
-    this.delay.connect(this.feedback)
-    this.feedback.connect(this.delay)
-    this.delay.connect(this.bypass)
+    this.inputGain.connect(this.bypassGain)
+    this.delay.connect(this.feedbackGain)
+    this.feedbackGain.connect(this.delay)
+    this.delay.connect(this.bypassGain)
 
     this.effectModule = {
       id: this.props.id,
       input: this.inputGain,
-      output: this.bypass
+      output: this.bypassGain
     }
     this.props.effectChain.push(this.effectModule)
   }
@@ -54,13 +53,14 @@ class Delay extends Component {
   componentWillUnmount () {
     this.inputGain.disconnect()
     this.delay.disconnect()
-    this.feedback.disconnect()
+    this.feedbackGain.disconnect()
+    this.bypassGain.disconnect()
   }
 
   componentDidUpdate () {
-    let feedbackMultiplier = 0.01 // TODO: Compare with other multipliers.
     this.delay.delayTime.setValueAtTime(this.state.time, this.audioCtx.currentTime)
-    this.feedback.gain.setValueAtTime(this.state.feedback * feedbackMultiplier, this.audioCtx.currentTime)
+    let feedbackGainReduction = 1 - (1 / this.state.feedback) // TODO: Rethink parameter functinality. Translate X repetitions to percentage
+    this.feedbackGain.gain.setValueAtTime(feedbackGainReduction, this.audioCtx.currentTime)
   }
   /**
    * * Callback for time parameter knob
@@ -107,10 +107,10 @@ class Delay extends Component {
 
     // Feedback Knob Props
     let feedbackKnobTitle = 'Feedback'
-    let feedback = 0
-    let feedbackDefValue = 0
-    let feedbackMin = 0
-    let feedbackMax = 100
+    let feedback = 1
+    let feedbackDefValue = 1
+    let feedbackMin = 1
+    let feedbackMax = 10
     let feedbackStep = 1
 
     return (

@@ -19,16 +19,15 @@ class EQ1 extends Component {
       gain: 0, // TODO: Add gain parameter.
       Q: 0 // TODO: Add Q-value parameter.
     }
-    this.setupEQ1()
     this.handleGainChange = this.handleGainChange.bind(this)
   }
   /**
    * * Create audio nodes and set initial values
    * * Connect internal chain
    * * Add to effect chain array
-   * @memberof EQ1
    */
-  setupEQ1 () {
+  componentDidMount () {
+    // create and connect all nodes.
     /* this.effectModule = {
       id: this.props.id,
       input: this.gain,
@@ -40,6 +39,10 @@ class EQ1 extends Component {
   /* componentDidUpdate () {
     this.gain.gain.setValueAtTime(this.state.gain, this.audioCtx.currentTime)
   } */
+
+  componentWillUnmount () {
+    // Disconnect all nodes.
+  }
 
   handleGainChange (e) {
     console.log(e.target.value)

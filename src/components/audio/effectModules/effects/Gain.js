@@ -13,27 +13,20 @@ class Gain extends Component {
     super(props)
     this.audioCtx = this.props.audioCtx
     this.state = {
-      gain: 1 // * Default value. Has to be 1 since less means gain reduction.
+      gain: 1 // ! Default value. Has to be 1 since less means gain reduction.
     }
-    this.setupGain()
     //* Bind callbacks
     this.handleGainChange = this.handleGainChange.bind(this)
   }
-  /**
-   * * Create audio nodes and set initial value
-   * * Add to effect chain array
-   * @memberof Gain
-   */
-  setupGain () {
+
+  componentDidMount () {
     this.gain = this.audioCtx.createGain()
     this.gain.gain.setValueAtTime(this.state.gain, this.audioCtx.currentTime)
-
     this.effectModule = {
       id: this.props.id,
       input: this.gain,
       output: this.gain
     }
-
     this.props.effectChain.push(this.effectModule)
   }
   /**
@@ -55,16 +48,16 @@ class Gain extends Component {
   render () {
      // * Gain Knob Props
     let gainKnobTitle = 'Gain'
-    let src = ''
-    let value = 1 //* Has to be 1
-    let defValue = 1 //* Has to be 1
-    let min = 1 //* Has to be 1
+    let src = '../img/sonatom.png'
+    let value = 1 //! Has to be 1
+    let defValue = 1 //! Has to be 1
+    let min = 1 //! Has to be 1
     let max = 10
     let step = 0.01
     let width = 0
     let height = 0
     let diameter = 64
-    let sprites = 0
+    let sprites = 100
     let sensitivity = 1
     let valuetip = 1
     let tooltip = null

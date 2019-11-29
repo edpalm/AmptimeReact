@@ -10,7 +10,7 @@ import AboutModal from './components/about/AboutModal'
 import LoginModal from './components/authentication/LoginModal'
 import RegisterModal from './components/authentication/RegisterModal'
 
-const fetch = require('node-fetch')
+const fetch = require('node-fetch') // TODO: Axios
 
 class App extends React.Component {
   constructor (props) {
@@ -23,6 +23,7 @@ class App extends React.Component {
 
   // move to constructor?
   async componentDidMount () {
+  // TODO: Axios
     let response = await fetch('/userLoggedInStatus', {
       method: 'GET'
       /* headers: {
