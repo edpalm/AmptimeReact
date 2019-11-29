@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import Gain from './effects/Gain'
+import EQ1 from './effects/EQ1'
 import Distortion from './effects/Distortion'
 import Delay from './effects/Delay'
+import Gain from './effects/Gain'
 import '../../../styles/guitarAmp/guitarEffects.scss'
 
 // Controller & Facade for effect modules.
@@ -13,10 +14,12 @@ class EffectModule extends Component {
       COMPRESSOR: 'compressor',
       DELAY: 'delay',
       DISTORTION: 'distortion',
+      EQ1: 'eq1',
       EQ3: 'eq3',
       EQ5: 'eq5',
-      EQ7: 'eq7',
       GAIN: 'gain',
+      LOWPASS: 'lowpass',
+      HIGHPASS: 'highpass',
       REVERB: 'reverb'
     }
 
@@ -39,14 +42,20 @@ class EffectModule extends Component {
       case effects.DISTORTION:
         effectModule = <Distortion effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} id={this.props.id} />
         break
+      case effects.LOWPASS:
+      // effectModule = <Lowpass effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        break
+      case effects.HIGHPASS:
+          // effectModule = <Highpass effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        break
+      case effects.EQ1:
+        effectModule = <EQ1 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        break
       case effects.EQ3:
         // effectModule = <EQ3 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.EQ5:
         // effectModule = <EQ5 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
-        break
-      case effects.EQ7:
-        // effectModule = <EQ7 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.GAIN:
         effectModule = <Gain effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} id={this.props.id} />
