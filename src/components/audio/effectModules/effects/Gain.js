@@ -2,22 +2,31 @@ import React, { Component } from 'react'
 import Knob from '../../../gui/Knob'
 import Switch from '../../../gui/Switch'
 import '../../../../styles/guitarAmp/guitarEffects.scss'
-
+/**
+ * * Represents a Gain effect module.
+ *
+ * @class Gain
+ * @extends {Component}
+ */
 class Gain extends Component {
   constructor (props) {
     super(props)
     this.audioCtx = this.props.audioCtx
     this.state = {
-      gainValue: 1
+      gain: 1 // * Default value. Has to be 1 since less means gain reduction.
     }
     this.setupGain()
-
+    //* Bind callbacks
     this.handleGainChange = this.handleGainChange.bind(this)
   }
-
+  /**
+   * * Create audio nodes and set initial value
+   * * Add to effect chain array
+   * @memberof Gain
+   */
   setupGain () {
     this.gain = this.audioCtx.createGain()
-    this.gain.gain.setValueAtTime(this.state.gainValue, this.audioCtx.currentTime)
+    this.gain.gain.setValueAtTime(this.state.gain, this.audioCtx.currentTime)
 
     this.effectModule = {
       id: this.props.id,
@@ -27,23 +36,29 @@ class Gain extends Component {
 
     this.props.effectChain.push(this.effectModule)
   }
-
+  /**
+   * * Set gain value based on state.
+   * * Controlled input.
+   */
   componentDidUpdate () {
-    console.log(this.state.gainValue)
-    this.gain.gain.setValueAtTime(this.state.gainValue, this.audioCtx.currentTime)
+    this.gain.gain.setValueAtTime(this.state.gain, this.audioCtx.currentTime)
   }
-
+  /**
+   * * Callback for Gain parameter knob.
+   * * Set gain value state
+   * @param {*} e event
+   * @memberof Gain
+   */
   handleGainChange (e) {
-    this.setState({gainValue: e.target.value})
-    console.log('changing gain')
+    this.setState({gain: e.target.value})
   }
   render () {
-     // Gain Knob Props
+     // * Gain Knob Props
     let gainKnobTitle = 'Gain'
     let src = ''
-    let value = 1
-    let defValue = 1
-    let min = 1
+    let value = 1 //* Has to be 1
+    let defValue = 1 //* Has to be 1
+    let min = 1 //* Has to be 1
     let max = 10
     let step = 0.01
     let width = 0

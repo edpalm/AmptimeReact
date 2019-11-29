@@ -2,32 +2,45 @@ import React, { Component } from 'react'
 import Knob from '../../../gui/Knob'
 import Switch from '../../../gui/Switch'
 import '../../../../styles/guitarAmp/guitarEffects.scss'
-
+/**
+ * * Represents a distortion effect module.
+ *
+ * @class Distortion
+ * @extends {Component}
+ */
 class Distortion extends Component {
   constructor (props) {
     super(props)
     this.audioCtx = this.props.audioCtx
-    this.state = {distortionValue: 0}
+    this.state = {distortion: 0}
     this.setupDistortion()
-    this.handleGainChange = this.handleGainChange.bind(this)
+    this.handleDistortionChange = this.handleDistortionChange.bind(this)
   }
-
+  /**
+   * * Setup Audio Node
+   * * Call curve generation method.
+   * * Add to sound chain array
+   */
   setupDistortion () {
+    let overSamplingRate = '4x'
     this.distortion = this.audioCtx.createWaveShaper()
-    this.distortion.oversample = '4x'
-    this.distortion.curve = this.createCurve()
+    this.distortion.oversample = overSamplingRate
+    this.distortion.curve = this.generateCurve()
     this.effectModule = {
       id: this.props.id,
       input: this.distortion,
       output: this.distortion
     }
-
     this.props.effectChain.push(this.effectModule)
   }
-  createCurve () {
-    // Curvecreation inspired by Kevin Ennis
-    // @ http://stackoverflow.com/a/22313408/1090298
-    let k = this.state.distortionValue * 10
+  /**
+   * *A huge thanks to Kevin Ennis for providing the curve generation formula.
+   * * Original can be found at http://stackoverflow.com/a/22313408/1090298
+   * @memberof Distortion
+   */
+  generateCurve () {
+    let distortionMultiplier = 50 // TODO: Try different multiplier values.
+    let k = typeof this.state.distortion === 'number' ? this.state.distortion * distortionMultiplier : 0
     let sampleRate = typeof this.audioCtx.sampleRate === 'number' ? this.audioCtx.sampleRate : 44100
     let deg = Math.PI / 180
     let curve = new Float32Array(sampleRate)
@@ -36,21 +49,28 @@ class Distortion extends Component {
       x = i * 2 / sampleRate - 1
       curve[i] = (3 + k) * x * 20 * deg / (Math.PI + k * Math.abs(x))
     }
+    console.log(curve)
     return curve
   }
-
+  /**
+   * *Generate new curve on state change
+   * * Controlled input
+   */
   componentDidUpdate () {
-    console.log(this.state.distortionValue)
-    this.distortion.curve = this.createCurve()
-    console.log(this.distortion.curve)
+    this.distortion.curve = this.generateCurve()
   }
-
-  handleGainChange (e) {
-    this.setState({distortionValue: e.target.value})
+  /**
+   * * Callback for Distortion value parameter knob
+   * @param {*} e event
+   * @memberof Distortion
+   */
+  handleDistortionChange (e) {
+    console.log('pepeppe')
+    this.setState({distortion: e.target.value})
   }
 
   render () {
-     // Knob Props
+     //* Distortion parameter Knob Props
     let id = ''
     let src = ''
     let value = 0
@@ -74,7 +94,7 @@ class Distortion extends Component {
     return (
       <div>
         <h3 className='moduleTitle'>Distortion</h3>
-        <Knob onInput={this.handleGainChange}
+        <Knob onInput={this.handleDistortionChange}
           id={id}
           src={src}
           value={value}
