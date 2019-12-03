@@ -3,29 +3,22 @@ import React, { Component } from 'react'
 class AppSelectionBar extends Component {
   constructor (props) {
     super(props)
-
     this.apps = {
       GUITARAMP: 'guitarAmp',
       DRUMKEYS: 'drumKeys'
     }
-
-    let defaultApp = this.apps.GUITARAMP
-
+    let defaultApp = this.apps.GUITARAMP //* Default selected app when amptime is loaded.
     this.state = {
       selectedApp: defaultApp
     }
-
     this.handleClick = this.handleClick.bind(this)
   }
   handleClick (e) {
     e.stopPropagation()
     e.preventDefault()
-
     let selectedApp = e.target.value
-
     this.setState({selectedApp: selectedApp})
   }
-
   componentDidUpdate () {
     switch (this.state.selectedApp) {
       case this.apps.GUITARAMP:
@@ -42,7 +35,6 @@ class AppSelectionBar extends Component {
         document.querySelector(`. + ${this.state.defaultApp}`).style.display = 'flex'
     }
   }
-
   render () {
     return (
       <div className='appSelectionBar'>
@@ -52,5 +44,4 @@ class AppSelectionBar extends Component {
     )
   }
 }
-
 export default AppSelectionBar

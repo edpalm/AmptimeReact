@@ -16,16 +16,19 @@ class AddEffectModal extends Component {
             <h2>Add Effect</h2>
             <div className='buttonContainer'>
               <button onClick={this.props.addEffectModule} value='cabinet' type='button'>Cabinet</button>
+              <button onClick={this.props.addEffectModule} value='chorus' type='button'>Chorus</button>
               <button onClick={this.props.addEffectModule} value='compressor' type='button'>Compressor</button>
               <button onClick={this.props.addEffectModule} value='delay' type='button'>Delay</button>
               <button onClick={this.props.addEffectModule} value='distortion' type='button'>Distortion</button>
-              <button onClick={this.props.addEffectModule} value='highpass' type='button'>Highpass</button>
-              <button onClick={this.props.addEffectModule} value='highpass' type='button'>Lowpass</button>
               <button onClick={this.props.addEffectModule} value='eq1' type='button'>EQ1</button>
               <button onClick={this.props.addEffectModule} value='eq3' type='button'>EQ3</button>
               <button onClick={this.props.addEffectModule} value='eq5' type='button'>EQ5</button>
+              <button onClick={this.props.addEffectModule} value='flanger' type='button'>Flanger</button>
               <button onClick={this.props.addEffectModule} value='gain' type='button'>Gain</button>
+              <button onClick={this.props.addEffectModule} value='passfilter' type='button'>Passfilter</button>
+              <button onClick={this.props.addEffectModule} value='phaser' type='button'>Phaser</button>
               <button onClick={this.props.addEffectModule} value='reverb' type='button'>Reverb</button>
+              <button onClick={this.props.addEffectModule} value='tremolo' type='button'>Tremolo</button>
             </div>
           </div>
           <div className='modalContainer'>

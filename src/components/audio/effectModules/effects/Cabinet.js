@@ -52,7 +52,6 @@ class Cabinet extends Component {
       // TODO: Display in gui ? Display component?
       console.log(err)
     })
-
     this.inputGain.connect(this.convolver)
     this.inputGain.connect(this.bypassGain)
     this.convolver.connect(this.convolverGain)
