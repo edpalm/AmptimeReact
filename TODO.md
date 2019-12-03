@@ -1,50 +1,54 @@
-## Backend
-### Helmet security
-### Encrypt cookies in store
-### Presets routing
-### Save presets to db
-## Frontend
-### localstorage for last used settings ?
-### GuitarAmp
+# Backend
+ * Helmet Security
+ * Encrypt cookies in store
+ * Presets routing
+ * Presets mongodb model
+ * Save presets to db
+# Frontend
+## Misc
+  * localstorage for continous use on refresh/close
+## GuitarAmp
   * Dynamic Audio Chain
   * Presets
-### Keyboard Drummer
+## Keyboard Drummer
   * Visual drumkit
   * Play samples on keystrokes
   * Selectable hotkeys
   * Visually display each trigger
   * Re-usable effects?
   * Metronome with bpm and score.
-### Sequencer App - integrate with effect modules?
-### Presets when logged in
-### Crud Presets
-### Finish About-Modal, embed video showing demo?, attributions, contributions
-### Styles - sass
-### Responsiveness for different viewports/screensizes
-
+## Sequencer App
+  * Midicontrolled sequencer.
+  * Reuse effectmodules.
+## Presets when logged in
+  * Display with list of presets.
+  * Crud.
+  * Share Rtc?
+## Finish About-Modal, embed video showing demo?, attributions, contributions
+## Styles - sass
+  * Responsiveness for different viewports/screensizes
+  * General styles
 ## Production
-### Reverse Proxy(nginx)
-### Https
-
-## Maybe
-### Oauth facebook?
-### rtc, sockets?
-
-## Current Iteration : Effects
-### Implement Effects
-  * Cabinet. Params: 1 knob. ampsim amount.
+  * Reverse proxy
+  * https
+  * http 2
+## Auth
+  * Alternative authentication through facebook or other?
+# Current Iteration : Effects
   * Compressor. Params 4-5. threshhold, knee, ratio...
-  * Reverb. Params: 3 knobs. Wet/Dry, Pre-delay, Decay.
-  * Eq. Highpass Params: Mode selection highpass. 1 slider, 1 knob. Selectable frequency and it's q-value.
-  * Eq. Lowpass Params: Mode selection highpass. 1 slider, 1 knob. Selectable frequency and it's q-value.
-  * Eq1. Params: 1 sliders. 1 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values
-  * Eq3. Params: 3 sliders. 3 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values
-  * Eq5. Params: 5 sliders. 5 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values
+  * Eq. Passfilter. Params: Highpass/LowPass selector. 1 slider. 1 knob. Selectable frequency and q-value. *Or standardized frequency selection.
+  * Flanger
+  * Phaser
+  * Eq1. Params: 1 sliders. 1 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values. *Or standardized frequency selection.
+  * Eq3. Params: 3 sliders. 3 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values  *Or standardized frequency selection.
+  * Eq5. Params: 5 sliders. 5 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values  *Or standardized frequency selection.
   * Chorus.
-  
-### Implemented Effects
+  * Rearrange effects. Add ways to rearrange effects in chain of effects through gui interaction.
+  * Remove effects. Add ways to remove a particular effectmodule through gui interaction.
+# Implemented
+  * Cabinet. Params: 1 knob. ampsim amount.
   * Gain. Params: 1 knob. Gain amount.
   * Distortion. Params: 1 Knob. distortion amount
   * Delay. Params: 2 knobs. Delaytime, feedback.
-### Implement "remove effect"
-### Implement "rearrange effect"
+  * Reverb. Params: 3 knobs. Wet/Dry, Pre-delay, Decay.
+
