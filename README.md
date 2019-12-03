@@ -10,11 +10,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### 'npm run serve'
+### `npm run serve`
 
 Starts the react client with uncertified https active.
 
-### 'npm run devserver'
+### `npm run devserver`
 
 Starts the express server with nodemon active.
 
