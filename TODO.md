@@ -7,6 +7,7 @@
 # Frontend
 ## Misc
   * localstorage for continous use on refresh/close
+  * Finish About-Modal, embed video showing demo?, attributions, contributions
 ## GuitarAmp
   * Dynamic Audio Chain
   * Presets
@@ -24,7 +25,6 @@
   * Display with list of presets.
   * Crud.
   * Share Rtc?
-## Finish About-Modal, embed video showing demo?, attributions, contributions
 ## Styles - sass
   * Responsiveness for different viewports/screensizes
   * General styles
@@ -34,7 +34,7 @@
   * http 2
 ## Auth
   * Alternative authentication through facebook or other?
-# Current Iteration : Effects
+## Current Iteration : Effects
   * Compressor. Params 4-5. threshhold, knee, ratio...
   * Eq. Passfilter. Params: Highpass/LowPass selector. 1 slider. 1 knob. Selectable frequency and q-value. *Or standardized frequency selection.
   * Flanger
@@ -45,7 +45,7 @@
   * Chorus.
   * Rearrange effects. Add ways to rearrange effects in chain of effects through gui interaction.
   * Remove effects. Add ways to remove a particular effectmodule through gui interaction.
-# Implemented
+## Implemented
   * Cabinet. Params: 1 knob. ampsim amount.
   * Gain. Params: 1 knob. Gain amount.
   * Distortion. Params: 1 Knob. distortion amount
