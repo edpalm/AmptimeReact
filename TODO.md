@@ -42,9 +42,11 @@
   * Eq3. Params: 3 sliders. 3 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values  *Or standardized frequency selection.
   * Eq5. Params: 5 sliders. 5 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values  *Or standardized frequency selection.
   * Chorus.
+  * Tremolo maybe
+  * Vibrato maybe
   * Rearrange effects. Add ways to rearrange effects in chain of effects through gui interaction.
   * Remove effects. Add ways to remove a particular effectmodule through gui interaction.
-  * Effect Switches. Toggle effect being active on switch.
+  * Effect Switches. Toggle effect being active on switch press.
 ## Implemented
   * Cabinet.
   * Compressor.
