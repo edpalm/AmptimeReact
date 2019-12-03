@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import Cabinet from './effects/Cabinet'
 // import Chorus from './effects/Chorus'
-// import Compressor from './effects/Compressor'
+import Compressor from './effects/Compressor'
 import Delay from './effects/Delay'
 import Distortion from './effects/Distortion'
 // import EQ1 from './effects/EQ1
@@ -48,7 +48,7 @@ class EffectModule extends Component {
           // effectModule = <Chorus effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.COMPRESSOR:
-        // effectModule = <Compressor effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        effectModule = <Compressor effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.DELAY:
         effectModule = <Delay effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} id={this.props.id} />

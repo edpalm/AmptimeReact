@@ -35,7 +35,6 @@
 ## Auth
   * Alternative authentication through facebook or other?
 ## Current Iteration : Effects
-  * Compressor. Params 4-5. threshhold, knee, ratio...
   * Eq. Passfilter. Params: Highpass/LowPass selector. 1 slider. 1 knob. Selectable frequency and q-value. *Or standardized frequency selection.
   * Flanger
   * Phaser
@@ -45,9 +44,11 @@
   * Chorus.
   * Rearrange effects. Add ways to rearrange effects in chain of effects through gui interaction.
   * Remove effects. Add ways to remove a particular effectmodule through gui interaction.
+  * Effect Switches. Toggle effect being active on switch.
 ## Implemented
-  * Cabinet. Params: 1 knob. ampsim amount.
-  * Gain. Params: 1 knob. Gain amount.
-  * Distortion. Params: 1 Knob. distortion amount
-  * Delay. Params: 2 knobs. Delaytime, feedback.
-  * Reverb. Params: 3 knobs. Wet/Dry, Pre-delay, Decay.
+  * Cabinet.
+  * Compressor.
+  * Distortion.
+  * Delay.
+  * Gain. 
+  * Reverb.
