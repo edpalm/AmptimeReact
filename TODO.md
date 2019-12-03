@@ -51,4 +51,3 @@
   * Distortion. Params: 1 Knob. distortion amount
   * Delay. Params: 2 knobs. Delaytime, feedback.
   * Reverb. Params: 3 knobs. Wet/Dry, Pre-delay, Decay.
-
