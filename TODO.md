@@ -8,6 +8,8 @@
 ## Misc
   * localstorage for continous use on refresh/close
   * Finish About-Modal, embed video showing demo?, attributions, contributions
+  * Gdpr approval
+  * Move microphone access approval to interactive element.
 ## GuitarAmp
   * Dynamic Audio Chain
   * Presets
