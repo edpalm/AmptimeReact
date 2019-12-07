@@ -6,6 +6,7 @@
  * Save presets to db
 # Frontend
 ## Misc
+  * replace useless divs with fragments.
   * localstorage for continous use on refresh/close
   * Finish About-Modal, embed video showing demo?, attributions, contributions
   * Gdpr approval
@@ -30,6 +31,7 @@
 ## Styles - sass
   * Responsiveness for different viewports/screensizes
   * General styles
+  * effect module div classnames and layout styles.
 ## Production
   * Reverse proxy
   * https
