@@ -43,7 +43,6 @@
   * Eq. Passfilter. Params: Highpass/LowPass selector. 1 slider. 1 knob. Selectable frequency and q-value. *Or standardized frequency selection.
   * Flanger
   * Phaser
-  * Eq1. Params: 1 sliders. 1 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values. *Or standardized frequency selection.
   * Eq3. Params: 3 sliders. 3 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values  *Or standardized frequency selection.
   * Eq5. Params: 5 sliders. 5 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values  *Or standardized frequency selection.
   * Chorus.
@@ -57,5 +56,6 @@
   * Compressor.
   * Distortion.
   * Delay.
+  * Eq1. Params: 1 sliders. 1 knobs. selectable frequencies. Selectable filtertypes(notch/peak) Q-values. *Or standardized frequency selection.
   * Gain. 
   * Reverb.

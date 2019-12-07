@@ -14,7 +14,6 @@ class InstrumentAmp extends React.Component {
 
     this.state = {
       audioSourceConnected: false,
-      impulseResponseBufferHasBeenGenerated: false, // TODO: Rename.
       effectModules: []
     }
 
@@ -108,13 +107,10 @@ class InstrumentAmp extends React.Component {
           <MasterGain audioCtx={this.audioCtx} masterGain={this.masterGain} />
         </div>
         <div className='effectArea'>
-          <ul className='effectList'>
+          <ol className='effectList'>
             {effectModuleList}
-          </ul>
+          </ol>
         </div>
-        {/* <div className='effectArea'>
-          {effectModules}
-        </div> */}
         <AddEffectModal addEffectModule={this.addEffectModule} />
       </div>
     )
