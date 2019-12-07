@@ -105,7 +105,6 @@ class Distortion extends Component {
      //* Distortion parameter Knob Props
     let id = ''
     let src = ''
-    let value = 0
     let defValue = 0
     let min = 0
     let max = 100
@@ -130,7 +129,7 @@ class Distortion extends Component {
         <Knob onInput={this.handleDistortionChange}
           id={id}
           src={src}
-          value={value}
+          value={this.state.distortion}
           defvalue={defValue}
           min={min}
           max={max}
@@ -152,7 +151,7 @@ class Distortion extends Component {
         <Knob onInput={this.handleMixChange}
           id={id}
           src={src}
-          value={value}
+          value={this.state.mix}
           defvalue={defValue}
           min={min}
           max={max}

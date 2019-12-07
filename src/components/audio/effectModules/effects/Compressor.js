@@ -82,7 +82,6 @@ class Compressor extends Component {
 
     // * Threshold Knob Props
     let thresholdKnobTitle = 'Threshold'
-    let thresholdValue = 0
     let thresholdDefValue = 0
     let thresholdMin = -100
     let thresholdMax = 0
@@ -90,7 +89,6 @@ class Compressor extends Component {
 
     // * Knee Knob Props
     let kneeKnobTitle = 'Knee'
-    let kneeValue = 1
     let kneeDefValue = 1
     let kneeMin = 0
     let kneeMax = 40
@@ -98,7 +96,6 @@ class Compressor extends Component {
 
     // * Ratio Knob Props
     let ratioKnobTitle = 'Ratio'
-    let ratioValue = 1
     let ratioDefValue = 1
     let ratioMin = 1
     let ratioMax = 20
@@ -106,7 +103,6 @@ class Compressor extends Component {
 
     // * Attack Knob Props
     let attackKnobTitle = 'Attack'
-    let attackValue = 0
     let attackDefValue = 0
     let attackMin = 0
     let attackMax = 1
@@ -114,7 +110,6 @@ class Compressor extends Component {
 
     // * Release Knob Props
     let releaseKnobTitle = 'Release'
-    let releaseValue = 0
     let releaseDefValue = 0
     let releaseMin = 0
     let releaseMax = 1
@@ -126,7 +121,7 @@ class Compressor extends Component {
         <span>{thresholdKnobTitle}</span>
         <Knob onInput={this.handleThresholdChange}
           src={src}
-          value={thresholdValue}
+          value={this.state.threshold}
           defvalue={thresholdDefValue}
           min={thresholdMin}
           max={thresholdMax}
@@ -146,7 +141,7 @@ class Compressor extends Component {
         <span>{kneeKnobTitle}</span>
         <Knob onInput={this.handleKneeChange}
           src={src}
-          value={kneeValue}
+          value={this.state.knee}
           defvalue={kneeDefValue}
           min={kneeMin}
           max={kneeMax}
@@ -166,7 +161,7 @@ class Compressor extends Component {
         <span>{ratioKnobTitle}</span>
         <Knob onInput={this.handleRatioChange}
           src={src}
-          value={ratioValue}
+          value={this.state.ratio}
           defvalue={ratioDefValue}
           min={ratioMin}
           max={ratioMax}
@@ -186,7 +181,7 @@ class Compressor extends Component {
         <span>{attackKnobTitle}</span>
         <Knob onInput={this.handleAttackChange}
           src={src}
-          value={attackValue}
+          value={this.state.attack}
           defvalue={attackDefValue}
           min={attackMin}
           max={attackMax}
@@ -206,7 +201,7 @@ class Compressor extends Component {
         <span>{releaseKnobTitle}</span>
         <Knob onInput={this.handleReleaseChange}
           src={src}
-          value={releaseValue}
+          value={this.state.release}
           defvalue={releaseDefValue}
           min={releaseMin}
           max={releaseMax}

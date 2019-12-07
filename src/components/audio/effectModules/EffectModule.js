@@ -5,7 +5,7 @@ import Cabinet from './effects/Cabinet'
 import Compressor from './effects/Compressor'
 import Delay from './effects/Delay'
 import Distortion from './effects/Distortion'
-// import EQ1 from './effects/EQ1
+import EQ1 from './effects/EQ1'
 // import EQ3 from './effects/EQ3
 // import EQ5 from './effects/EQ5
 // import Flanger from './effects/Flanger
@@ -63,7 +63,7 @@ class EffectModule extends Component {
           // effectModule = <Highpass effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.EQ1:
-        // effectModule = <EQ1 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
+        effectModule = <EQ1 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />
         break
       case effects.EQ3:
         // effectModule = <EQ3 effectChain={this.props.effectChain} audioCtx={this.props.audioCtx} />

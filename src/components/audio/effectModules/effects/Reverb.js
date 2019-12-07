@@ -126,7 +126,6 @@ class Reverb extends Component {
 
     //* Mix Knob Props
     let mixKnobTitle = 'Mix'
-    let mixValue = 0
     let mixDefValue = 0
     let mixMin = 0
     let mixMax = 10
@@ -134,7 +133,6 @@ class Reverb extends Component {
 
     //* Time Knob Props
     let timeKnobTitle = 'Time'
-    let timeValue = 0
     let timeDefValue = 0
     let timeMin = 0
     let timeMax = 10
@@ -142,7 +140,6 @@ class Reverb extends Component {
 
     //* Decay Knob Props
     let decayKnobTitle = 'Decay'
-    let decayValue = 0
     let decayDefValue = 0
     let decayMin = 0
     let decayMax = 10
@@ -150,7 +147,6 @@ class Reverb extends Component {
 
     //* Cutoff Knob Props
     let cutoffKnobTitle = 'cutoff'
-    let cutoffValue = 0
     let cutoffDefValue = 0
     let cutoffMin = 250
     let cutoffMax = 20000
@@ -163,7 +159,7 @@ class Reverb extends Component {
         <span>{mixKnobTitle}</span>
         <Knob onInput={this.handleMixChange}
           src={src}
-          value={mixValue}
+          value={this.state.mix}
           defvalue={mixDefValue}
           min={mixMin}
           max={mixMax}
@@ -183,7 +179,7 @@ class Reverb extends Component {
         <span>{timeKnobTitle}</span>
         <Knob onInput={this.handleTimeChange}
           src={src}
-          value={timeValue}
+          value={this.state.time}
           defvalue={timeDefValue}
           min={timeMin}
           max={timeMax}
@@ -203,7 +199,7 @@ class Reverb extends Component {
         <span>{decayKnobTitle}</span>
         <Knob onInput={this.handleDecayChange}
           src={src}
-          value={decayValue}
+          value={this.state.decay}
           defvalue={decayDefValue}
           min={decayMin}
           max={decayMax}
@@ -223,7 +219,7 @@ class Reverb extends Component {
         <span>{cutoffKnobTitle}</span>
         <Knob onInput={this.handleCutoffChange}
           src={src}
-          value={cutoffValue}
+          value={this.state.cutoff}
           defvalue={cutoffDefValue}
           min={cutoffMin}
           max={cutoffMax}

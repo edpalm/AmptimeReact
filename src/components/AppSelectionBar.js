@@ -23,15 +23,15 @@ class AppSelectionBar extends Component {
     switch (this.state.selectedApp) {
       case this.apps.GUITARAMP:
         document.querySelector('.guitarAmp').style.display = 'flex'
-        // set other app display styles.
+        //* set other apps display styles.
         break
       case this.apps.DRUMKEYS:
         document.querySelector('.guitarAmp').style.display = 'none'
-        // set other app display styles.
+        //* set other apps display styles.
         console.log('drumkeys')
         break
       default:
-        // temp default
+        //* temp default
         document.querySelector(`. + ${this.state.defaultApp}`).style.display = 'flex'
     }
   }

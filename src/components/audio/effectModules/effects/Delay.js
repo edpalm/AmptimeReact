@@ -99,7 +99,6 @@ class Delay extends Component {
 
     // Time Knob Props
     let timeKnobTitle = 'Time'
-    let time = 0
     let timeDefValue = 0
     let timeMin = 0
     let timeMax = 10
@@ -107,7 +106,6 @@ class Delay extends Component {
 
     // Feedback Knob Props
     let feedbackKnobTitle = 'Feedback'
-    let feedback = 1
     let feedbackDefValue = 1
     let feedbackMin = 1
     let feedbackMax = 10
@@ -120,7 +118,7 @@ class Delay extends Component {
         <Knob onInput={this.handleTimeChange}
           id=''
           src={src}
-          value={time}
+          value={this.state.time}
           defvalue={timeDefValue}
           min={timeMin}
           max={timeMax}
@@ -141,7 +139,7 @@ class Delay extends Component {
         <Knob onInput={this.handleFeedbackChange}
           id=''
           src={src}
-          value={feedback}
+          value={this.state.feedback}
           defvalue={feedbackDefValue}
           min={feedbackMin}
           max={feedbackMax}

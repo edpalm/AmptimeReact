@@ -33,6 +33,7 @@ class Slider extends Component {
         valuetip={this.props.valuetip}
         tooltip={this.props.tooltip}
         conv={this.props.conv}
+        enable={this.props.enable}
         outline={this.props.outline}
         midilearn={this.props.midilearn}
         midicc={this.props.midicc} />

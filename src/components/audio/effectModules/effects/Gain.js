@@ -13,7 +13,7 @@ class Gain extends Component {
     super(props)
     this.audioCtx = this.props.audioCtx
     this.state = {
-      gain: 1 // ! Default value. Has to be 1 since less means gain reduction.
+      gain: 1 // ! Default value. Has to be >= 1 since less means gain reduction.
     }
     //* Bind callbacks
     this.handleGainChange = this.handleGainChange.bind(this)
@@ -49,9 +49,8 @@ class Gain extends Component {
      // * Gain Knob Props
     let gainKnobTitle = 'Gain'
     let src = '../img/sonatom.png'
-    let value = 1 //! Has to be 1
-    let defValue = 1 //! Has to be 1
-    let min = 1 //! Has to be 1
+    let defValue = 1 //! Has to be > 0
+    let min = 1 //! Has to be > 0
     let max = 10
     let step = 0.01
     let width = 0
@@ -73,7 +72,7 @@ class Gain extends Component {
         <span>{gainKnobTitle}</span>
         <Knob onInput={this.handleGainChange}
           src={src}
-          value={value}
+          value={this.state.gain}
           defvalue={defValue}
           min={min}
           max={max}

@@ -34,7 +34,7 @@ class Cabinet extends Component {
     this.bypassGain.gain.setValueAtTime(1, this.audioCtx.currentTime)
     this.convolverGain.gain.setValueAtTime(0, this.audioCtx.currentTime)
     this.outputGain.gain.setValueAtTime(1, this.audioCtx.currentTime) // ! Keep at 1 for 100% passthrough
-
+    // TODO: Async
     axios({
       method: 'get',
       url: '../audio/ampsim.wav',
@@ -90,7 +90,6 @@ class Cabinet extends Component {
      //* Cabinet parameter Knob Props
     let id = ''
     let src = ''
-    let value = 0
     let defValue = 0
     let min = 0
     let max = 100
@@ -115,7 +114,7 @@ class Cabinet extends Component {
         <Knob onInput={this.handleMixChange}
           id={id}
           src={src}
-          value={value}
+          value={this.state.mix}
           defvalue={defValue}
           min={min}
           max={max}

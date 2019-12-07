@@ -32,6 +32,7 @@
   * Responsiveness for different viewports/screensizes
   * General styles
   * effect module div classnames and layout styles.
+  * Check if webaudio-controls inline styling can be replaced by css.
 ## Production
   * Reverse proxy
   * https
