@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Knob from '../../../gui/Knob'
 import Switch from '../../../gui/Switch'
 import Slider from '../../../gui/Slider'
-import '../../../../styles/guitarAmp/guitarEffects.scss'
+import '../../../../styles/instrumentAmp/instrumentAmp.scss'
 /**
  * * Represents a 1-Filter Equalizer.
  *

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Knob from '../../../gui/Knob'
 import Switch from '../../../gui/Switch'
-import '../../../../styles/guitarAmp/guitarEffects.scss'
+import '../../../../styles/instrumentAmp/instrumentAmp.scss'
 /**
  * * Represents a distortion effect module.
  *

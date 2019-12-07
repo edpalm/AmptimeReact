@@ -15,7 +15,7 @@ import Gain from './effects/Gain'
 import Reverb from './effects/Reverb'
 // import Tremolo from './effects/Tremolo
 
-import '../../../styles/guitarAmp/guitarEffects.scss'
+import '../../../styles/instrumentAmp/instrumentAmp.scss'
 
 // Controller & Facade for effect modules.
 class EffectModule extends Component {

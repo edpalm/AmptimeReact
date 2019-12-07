@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import Knob from '../../../gui/Knob'
 import Switch from '../../../gui/Switch'
-import '../../../../styles/guitarAmp/guitarEffects.scss'
+import '../../../../styles/instrumentAmp/instrumentAmp.scss'
 const axios = require('axios')
 /**
  * * Represents an amp-simulation Cabinet effect module.
- *
- * @class Cabinet
- * @extends {Component}
  */
 class Cabinet extends Component {
   constructor (props) {
@@ -34,24 +31,7 @@ class Cabinet extends Component {
     this.bypassGain.gain.setValueAtTime(1, this.audioCtx.currentTime)
     this.convolverGain.gain.setValueAtTime(0, this.audioCtx.currentTime)
     this.outputGain.gain.setValueAtTime(1, this.audioCtx.currentTime) // ! Keep at 1 for 100% passthrough
-    // TODO: Async
-    axios({
-      method: 'get',
-      url: '../audio/ampsim.wav',
-      responseType: 'arraybuffer'
-    })
-    .then((response) => {
-      let requestedBuffer = response.data
-      this.audioCtx.decodeAudioData(requestedBuffer, (buffer) => {
-        this.convolver.buffer = buffer
-      }, (error) => {
-        console.log(`Decoding failed :${error.err}`)
-      })
-    })
-    .catch((err) => {
-      // TODO: Display in gui ? Display component?
-      console.log(err)
-    })
+    this.setImpulseResponseBuffer()
     this.inputGain.connect(this.convolver)
     this.inputGain.connect(this.bypassGain)
     this.convolver.connect(this.convolverGain)
@@ -64,6 +44,22 @@ class Cabinet extends Component {
     }
     this.props.effectChain.push(this.effectModule)
   }
+
+  async setImpulseResponseBuffer () {
+    let response = await axios(
+      {
+        method: 'get',
+        url: '../audio/ampsim.wav', // TODO: Change to mp3
+        responseType: 'arraybuffer'
+      })
+    let requestedBuffer = response.data
+    await this.audioCtx.decodeAudioData(requestedBuffer, (buffer) => {
+      console.log(buffer)
+      this.convolver.buffer = buffer
+    }, (error) => {
+      console.log(`Decoding failed :${error.err}`)
+    })
+  }
   componentWillUnmount () {
     this.inputGain.disconnect()
     this.convolver.disconnect()
@@ -72,6 +68,7 @@ class Cabinet extends Component {
     this.outputGain.disconnect()
   }
   componentDidUpdate () {
+    console.log(this.convolver.buffer)
     let convolverGainValue = this.state.mix * 0.01
     let bypassGainValue = 1 - (this.state.mix * 0.01)
     this.convolverGain.gain.setValueAtTime(convolverGainValue, this.audioCtx.currentTime)

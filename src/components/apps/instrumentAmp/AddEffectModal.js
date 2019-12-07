@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import '../../../styles/instrumentAmp/instrumentAmp.scss'
 import '../../../styles/modals.css'
-
+/**
+ ** Effect selection modal
+ */
 class AddEffectModal extends Component {
   toggleModal (e) {
     if (e.target.className === 'addEffectModal' || e.target.className === 'closeButton') {

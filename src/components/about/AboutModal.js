@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import '../../styles/modals.css'
-
+/**
+ *
+ ** Modal showing information about the webapplication. How to use, attributions. Author information
+ */
 class AboutModal extends Component {
   toggleModal (e) {
     if (e.target.className === 'aboutModal' || e.target.className === 'closeButton') {

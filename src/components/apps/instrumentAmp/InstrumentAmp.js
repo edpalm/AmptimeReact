@@ -1,19 +1,20 @@
 import React from 'react'
-import '../../../styles/guitarAmp/guitarAmp.scss'
+import '../../../styles/instrumentAmp/instrumentAmp.scss'
 import AddEffectModal from './AddEffectModal'
 import AddEffectButton from './toolbar/AddEffectButton'
 import PowerSwitch from './toolbar/PowerSwitch'
 import MasterGain from './toolbar/MasterGain'
 import EffectModule from '../../audio/effectModules/EffectModule'
 
-class GuitarAmp extends React.Component {
+class InstrumentAmp extends React.Component {
   constructor (props) {
+    console.log(props)
     super(props)
-    this.setupAudioCtx()
-    this.getUserAudioSource()
+    this.audioCtx = this.props.audioCtx
 
     this.state = {
       audioSourceConnected: false,
+      impulseResponseBufferHasBeenGenerated: false, // TODO: Rename.
       effectModules: []
     }
 
@@ -27,18 +28,14 @@ class GuitarAmp extends React.Component {
     this.toggleAudioState = this.toggleAudioState.bind(this)
   }
 
+  componentDidMount () {
+    this.getUserAudioSource()
+  }
+
   componentDidUpdate () {
     if (this.state.audioSourceConnected) {
       this.setUpEffectChain()
     }
-  }
-
-  setupAudioCtx () {
-    let AudioContext = window.AudioContext || window.webkitAudioContext
-    this.audioCtx = new AudioContext({
-      latencyHint: 'interactive',
-      sampleRate: 48000
-    })
   }
 
   async getUserAudioSource () {
@@ -69,18 +66,16 @@ class GuitarAmp extends React.Component {
     }
   }
 
-  // callback for powerswitch
+  //* Callback for powerswitch
   async toggleAudioState () {
     if (this.audioCtx.state === 'suspended') {
       await this.audioCtx.resume()
-      console.log(this.audioCtx.state)
     } else {
       await this.audioCtx.suspend()
-      console.log(this.audioCtx.state)
     }
   }
 
-  // callback for effect-selection modal
+  //* Callback for effect-selection modal.
   addEffectModule (e) {
     let effectType = e.target.value
     let effectID = this.effectID++
@@ -95,27 +90,35 @@ class GuitarAmp extends React.Component {
   }
 
   render () {
-    const effectModules =
-      this.state.effectModules.map(effectModule => <EffectModule
-        key={effectModule.effectID}
-        effectType={effectModule.effectType}
-        effectChain={this.effectChain}
-        audioCtx={this.audioCtx}
-        id={effectModule.effectID} />)
+    let effectModuleList =
+      this.state.effectModules.map(effectModule =>
+        <li className='listEffect' key={effectModule.effectID}>
+          <EffectModule
+            /* key={effectModule.effectID} */
+            effectType={effectModule.effectType}
+            effectChain={this.effectChain}
+            audioCtx={this.audioCtx}
+            id={effectModule.effectID} />
+        </li>)
     return (
-      <div className='guitarAmp'>
-        <div className='guitarAmpToolbar'>
+      <div className='instrumentAmp'>
+        <div className='instrumentAmpToolbar'>
           <PowerSwitch toggleAudioState={this.toggleAudioState} />
           <AddEffectButton />
           <MasterGain audioCtx={this.audioCtx} masterGain={this.masterGain} />
         </div>
         <div className='effectArea'>
-          {effectModules}
+          <ul className='effectList'>
+            {effectModuleList}
+          </ul>
         </div>
+        {/* <div className='effectArea'>
+          {effectModules}
+        </div> */}
         <AddEffectModal addEffectModule={this.addEffectModule} />
       </div>
     )
   }
 }
 
-export default GuitarAmp
+export default InstrumentAmp

@@ -4,10 +4,10 @@ class AppSelectionBar extends Component {
   constructor (props) {
     super(props)
     this.apps = {
-      GUITARAMP: 'guitarAmp',
+      INSTRUMENTAMP: 'instrumentAmp',
       DRUMKEYS: 'drumKeys'
     }
-    let defaultApp = this.apps.GUITARAMP //* Default selected app when amptime is loaded.
+    let defaultApp = this.apps.INSTRUMENTAMP //! Default selected app when amptime is loaded. placeholder.
     this.state = {
       selectedApp: defaultApp
     }
@@ -18,15 +18,16 @@ class AppSelectionBar extends Component {
     e.preventDefault()
     let selectedApp = e.target.value
     this.setState({selectedApp: selectedApp})
+    // TODO: Get microphone approval if InstrumentAmp is selected.
   }
   componentDidUpdate () {
     switch (this.state.selectedApp) {
-      case this.apps.GUITARAMP:
-        document.querySelector('.guitarAmp').style.display = 'flex'
+      case this.apps.INSTRUMENTAMP:
+        document.querySelector('.instrumentAmp').style.display = 'flex'
         //* set other apps display styles.
         break
       case this.apps.DRUMKEYS:
-        document.querySelector('.guitarAmp').style.display = 'none'
+        document.querySelector('.instrumentAmp').style.display = 'none'
         //* set other apps display styles.
         console.log('drumkeys')
         break
@@ -38,7 +39,7 @@ class AppSelectionBar extends Component {
   render () {
     return (
       <div className='appSelectionBar'>
-        <button onClick={this.handleClick} className='appSelectButton' value={this.apps.GUITARAMP} type='button' >G-Amp</button>
+        <button onClick={this.handleClick} className='appSelectButton' value={this.apps.INSTRUMENTAMP} type='button' >G-Amp</button>
         <button onClick={this.handleClick} className='appSelectButton' value={this.apps.DRUMKEYS} >D-Keys</button>
       </div>
     )

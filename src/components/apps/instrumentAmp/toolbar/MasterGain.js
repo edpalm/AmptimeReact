@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import Knob from '../../../gui/Knob'
-import '../../../../styles/guitarAmp/guitarAmp.scss'
+import '../../../../styles/instrumentAmp/instrumentAmp.scss'
 
 class MasterGain extends Component {
   constructor (props) {

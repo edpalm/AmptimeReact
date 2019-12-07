@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Knob from '../../../gui/Knob'
 import Switch from '../../../gui/Switch'
-import '../../../../styles/guitarAmp/guitarEffects.scss'
+import '../../../../styles/instrumentAmp/instrumentAmp.scss'
 const Freeverb = require('soundbank-reverb')
 
 /**
@@ -154,6 +154,7 @@ class Reverb extends Component {
 
     return (
       <div>
+        <h3>Reverb</h3>
         <span>Reverse</span>
         <Switch onClick={this.handleReverse} height={this.height} width={this.width} />
         <span>{mixKnobTitle}</span>

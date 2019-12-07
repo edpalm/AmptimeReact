@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../../../../styles/guitarAmp/guitarAmp.scss'
+import '../../../../styles/instrumentAmp/instrumentAmp.scss'
 
 class AddEffectButton extends Component {
   toggleAddEffectModal (e) {

@@ -11,7 +11,7 @@ const MongoDBStore = require('connect-mongo')(session)
 
 const app = express()
 
-// Setup session store
+//* Setup session store
 const store = new MongoDBStore({
   url: process.env.STORE_URI
 })
@@ -20,10 +20,10 @@ const store = new MongoDBStore({
   console.log(err)
 }) */
 
-// Connect to dB
+//* Connect to dB
 mongoose()
 
-// allow json and forms
+//* allow json and forms
 app.use(bodyParser.json())
 app.use(express.urlencoded({ extended: false }))
 
@@ -39,7 +39,7 @@ app.use(session({
   store: store
 }))
 
-// Allow dev proxy requests
+//* Allow dev proxy requests
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*')
   next()

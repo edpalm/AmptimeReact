@@ -4,7 +4,7 @@ import './styles/App.css'
 import AboutButton from './components/about/AboutButton'
 import LoginController from './components/authentication/LoginController'
 import AppSelectionBar from './components/AppSelectionBar'
-import AppDisplayArea from './components/AppDisplayArea'
+import AppZone from './components/AppZone'
 
 import AboutModal from './components/about/AboutModal'
 import LoginModal from './components/authentication/LoginModal'
@@ -36,7 +36,7 @@ class App extends React.Component {
           <LoginController isLoggedIn={this.state.isLoggedIn} />
         </nav>
         <AppSelectionBar />
-        <AppDisplayArea isLoggedIn={this.state.isLoggedIn} />
+        <AppZone isLoggedIn={this.state.isLoggedIn} />
         <AboutModal />
         <LoginModal />
         <RegisterModal />

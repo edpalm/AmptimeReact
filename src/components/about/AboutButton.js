@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
-
+/**
+ ** Buttoncomponent opening About-Modal
+ */
 class LogoutControl extends Component {
   toggleAboutModal () {
     document.querySelector('.aboutModal').style.display = 'block'
